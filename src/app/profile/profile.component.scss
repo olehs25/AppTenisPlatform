@@ -1,0 +1,28 @@
+.header-image {
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.card {
+  width: 80vw;
+  height: 26.7vw;
+  max-width: 70%;
+  margin-left: 2%;
+  margin-top: 2%;
+  background-color: #cdc8f5;
+}
+
+.main-div {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.d-flex ms-auto{
+  padding-top: 5%;
+  padding-bottom: 5%;
+}

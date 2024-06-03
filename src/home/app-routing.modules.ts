@@ -9,6 +9,7 @@ import {RegisterComponent} from "../app/register/register.component";
 import {MapComponent} from "../app/map/map.component";
 import {EditProfileComponent} from "../app/edit-profile/edit-profile.component";
 import {DashboardComponent} from "../app/dashboard/dashboard.component";
+import {ReservationComponent} from "../app/reservation/reservation.component";
 
 const routes: Routes = [
   {
@@ -32,8 +33,11 @@ const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent
   },
+ // {
+   // path: '**', component: DashboardComponent
+  //},
   {
-    path: '**', component: TenisDashboardComponent
+    path: 'reservation', component: ReservationComponent
   },
 
 

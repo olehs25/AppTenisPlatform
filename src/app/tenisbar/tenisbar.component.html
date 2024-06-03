@@ -15,20 +15,31 @@
           <a class="nav-link" href="#">Escuela Tenis</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Reservas</a>
+          <a class="nav-link" href="reservation">Reservas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"  href="map">Instalaciones </a>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login">Iniciar sesón</a>
+          <a class="nav-link" href="login" *ngIf="!loginService.isLoggedIn()" >Iniciar sesón</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profile">Pérfil</a>
+          <a class="nav-link"  href="profile" *ngIf="loginService.isLoggedIn()">Pérfil</a>
         </li>
       </ul>
-        <a class="nav-link-login" href="login"><mat-icon>account_circle</mat-icon></a>
+      <a  *ngIf="loginService.isLoggedIn()"   [ngModel]="getUserFullName()" href="profile">{{fullName}}</a>
+      <a
+        *ngIf="loginService.isLoggedIn()"
+        (click)="logout()"
+        mat-icon-button
+        class="icono"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon class="white-icon">logout</mat-icon>
+
+      </a >
+        <a *ngIf="!loginService.isLoggedIn()" class="nav-link-login" href="login"><mat-icon>account_circle</mat-icon></a>
     </div>
   </div>
 </nav>

@@ -23,6 +23,8 @@ export class AuthService {
     return true;
   }
 
+
+
   //Comprobamos si el usuario esta logueado
   isLoggedIn(){
     let token = localStorage.getItem('token');
@@ -36,7 +38,7 @@ export class AuthService {
   //Eliminamos el token del local storage al cerrar sesion
   logout(){
     localStorage.removeItem('token');
-
+    localStorage.removeItem('user');
     return true;
   }
 
@@ -47,6 +49,7 @@ export class AuthService {
 
   //seteamos el usuario
   setUser(user:any){
+    localStorage.removeItem('user');
     localStorage.setItem('user',JSON.stringify(user));
   }
 
@@ -64,10 +67,25 @@ export class AuthService {
   //Obtenemos el rol del usuario
   getUserRole(){
     let user = this.getUser();
-    return user.authorities[0].authority;
+    console.log("ROLLLLLLLL: "+user.role);
+
+    return user.role;
   }
 
-  public getCurrentUser(){
-    return this.http.get(API_URL_CURRENT_USER);
+  //Obtenemos el fullname del usuario
+  getUserFullName(){
+    let user = this.getUser();
+    return user.fullName;
+  }
+
+  //Obtenemos el email del usuario
+  getUserEmail(){
+    let user = this.getUser();
+    return user.email;
+  }
+
+  public getCurrentUser(username:any){
+    console.log("USUARIOOO: "+username);
+    return this.http.get(API_URL_CURRENT_USER+"/"+username);
   }
 }

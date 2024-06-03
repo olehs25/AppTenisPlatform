@@ -10,14 +10,15 @@ import {UserService} from "../services/user.service";
 })
 export class RegisterComponent implements OnInit {
   hide = true;
-  public usuario = {
-    nombre: '',
-    apellidos: '',
-    dni: '',
+  public user = {
+    fullName: '',
+    country: '',
     email: '',
+    language: '',
+    nif: '',
+    personalPhone: '',
     password: '',
-    birthDate: '',
-    telefono: '',
+    area: '',
   };
 
   constructor(
@@ -72,15 +73,16 @@ export class RegisterComponent implements OnInit {
 
   formSubmit() {
     console.log('Form submitted');
-    console.log(this.usuario);
+    console.log(this.user);
     if (
-      this.usuario.nombre == '' ||
-      this.usuario.apellidos == '' ||
-      this.usuario.dni == '' ||
-      this.usuario.email == '' ||
-      this.usuario.password == '' ||
-      this.usuario.birthDate == '' ||
-      this.usuario.telefono == ''
+      this.user.fullName == '' ||
+      this.user.country == '' ||
+      this.user.email == '' ||
+      this.user.language == '' ||
+      this.user.nif == '' ||
+      this.user.personalPhone == '' ||
+      this.user.password == '' ||
+      this.user.area == ''
     ) {
       Swal.fire({
         title: 'Campos obligatorios',
@@ -94,7 +96,7 @@ export class RegisterComponent implements OnInit {
     }
 
     //compruebo que el email sea correcto
-    if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(this.usuario.email)) {
+    if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(this.user.email)) {
       Swal.fire({
         title: 'Email inválido',
         text: 'El email introducido no tiene un formato válido',
@@ -105,7 +107,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
     //compruebo que el telefono sea correcto (9 digitos)
-    if (!/^[0-9]{9}$/.test(this.usuario.telefono)) {
+    if (!/^[0-9]{9}$/.test(this.user.personalPhone)) {
       Swal.fire({
         title: 'Teléfono inválido',
         text: 'El teléfono introducido debe ser de (9 dígitos)',
@@ -117,7 +119,7 @@ export class RegisterComponent implements OnInit {
     }
 
     //compruebo que la contraseña tenga al menos 8 caracteres
-    if (this.usuario.password.length < 8) {
+    if (this.user.password.length < 8) {
       Swal.fire({
         title: 'Contraseña inválida',
         text: 'La contraseña debe tener al menos 8 caracteres',
@@ -129,7 +131,7 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    this.checkEmail(this.usuario.email).then(
+    this.checkEmail(this.user.email).then(
       (data) => {
         console.log('El email está registrado');
         Swal.fire({
@@ -143,7 +145,7 @@ export class RegisterComponent implements OnInit {
       },
       (error) => {
         console.log('El email no está registrado');
-        this.userService.registrarUsuario(this.usuario).subscribe(
+        this.userService.registrarUsuario(this.user).subscribe(
           (data: any) => {
             console.log(data);
             Swal.fire({
@@ -154,7 +156,7 @@ export class RegisterComponent implements OnInit {
               confirmButtonColor: '#2d336b',
             }).then((result) => {
               if (result.isConfirmed) {
-                window.location.reload();
+                window.location.href='/login';
               }
             });
             return;

@@ -1,0 +1,12 @@
+.calendar-container {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  height: 75%;
+  margin: 1%
+}
+
+.full-calendar {
+  flex-grow: 1;
+  height: 100%;
+}

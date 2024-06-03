@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent {
 
   loginData = {
-    email: '',
+    username: '',
     password: ''
   };
 
@@ -21,14 +21,15 @@ export class LoginComponent {
 
   hide = true;
   ngOnInit(): void {
+    localStorage.removeItem('user')
   }
 
   formSubmit() {
     console.log(this.loginData);
-    if (this.loginData.email.trim() == '' || this.loginData.email == null) {
+    if (this.loginData.username.trim() == '' || this.loginData.username == null) {
       Swal.fire({
-        title: 'Email obligatorio',
-        text: 'Debe introducir un email válido para poder iniciar sesión',
+        title: 'Usuario obligatorio',
+        text: 'Debe introducir un usuario válido para poder iniciar sesión',
         icon: 'warning',
         confirmButtonText: 'Ok',
         confirmButtonColor: '#2d336b'
@@ -48,31 +49,24 @@ export class LoginComponent {
 
     this.loginService.generateToken(this.loginData).subscribe(
         (data:any)=>{
-          console.log('Token obtenido');
-          console.log(data);
-          this.loginService.loginUser(data.token);
-          this.loginService.getCurrentUser().subscribe((user:any)=>{
-            console.log(user);
+          console.log('Token obtenido:' +data.token);
+
+          this.loginService.getCurrentUser(this.loginData.username).subscribe((user:any)=>{
+            console.log("USUARIOOO final: "+user);
             this.loginService.setUser(user);
-            if(this.loginService.getUserRole()=='SuperSysAdmin'){
-              // window.location.href='/admin';
-              // this.router.navigate(['admin']);
+            this.loginService.loginUser(data.token);
+            if(this.loginService.getUserRole()=='ADMIN'){
+              window.location.href = 'http://localhost:8081/';
+              //this.router.navigate(['profile']);
               this.loginService.loginStatusSubject.next(true);
               // window.location.reload();
-              window.location.href='/admin';
+              //window.location.href='/admin';
 
-            }else if (this.loginService.getUserRole()=='usuario'){
+            }else if (this.loginService.getUserRole()=='USER'){
               // window.location.href='/user';
-              this.router.navigate(['user']);
+              this.router.navigate(['home']);
               this.loginService.loginStatusSubject.next(true);
-              window.location.href='/user';
-            } else if(this.loginService.getUserRole()=='SuperSysAdminComunidad'){
-              this.loginService.loginStatusSubject.next(true);
-              window.location.href='/adminComunidad';
-
-            }else if (this.loginService.getUserRole()=='usuarioComunidad'){
-              this.loginService.loginStatusSubject.next(true);
-              window.location.href='/userComunidad';
+              window.location.href='/#';
             } else {
               this.loginService.logout();
               Swal.fire({

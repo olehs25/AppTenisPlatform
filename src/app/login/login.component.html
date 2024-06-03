@@ -10,9 +10,9 @@
         <form (ngSubmit)="formSubmit()">
             <h2>Iniciar Sesión</h2>
             <mat-form-field class="fields" appearance="outline">
-                <mat-icon class="primary-icon" matIconPrefix="">alternate_email</mat-icon>
-                <mat-label>Email</mat-label>
-                <input [(ngModel)] = "loginData.email" name="email" required type="email" matInput placeholder="Introduzca su Email" />
+                <mat-icon class="primary-icon" matIconPrefix="">alternate_username</mat-icon>
+                <mat-label>Usuario</mat-label>
+                <input [(ngModel)] = "loginData.username" name="username" required type="username" matInput placeholder="Introduzca su nomnbre de Usuario" />
             </mat-form-field>
             <br>
             <mat-form-field class="fields" appearance="outline">
