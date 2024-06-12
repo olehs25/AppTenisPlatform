@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/logo_tenis.png" alt="Tenis Olula del Rio" class="logo-img">
+      Tenis Olula del Rio
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="home"><i class="bi bi-house-fill" style="font-size: 20px;color:#bdb6d9"></i>
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="inscription">Escuela Tenis</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reservation">Reservas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="map">Instalaciones </a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login" *ngIf="!loginService.isLoggedIn()" >Iniciar sesón</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="profile" *ngIf="loginService.isLoggedIn()">Pérfil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://localhost:8081/user" *ngIf="isAdmin">Admin</a>
+        </li>
+      </ul>
+      <a  *ngIf="loginService.isLoggedIn()"   [ngModel]="getUserFullName()" href="profile">{{fullName}}</a>
+      <a
+        *ngIf="loginService.isLoggedIn()"
+        (click)="logout()"
+        mat-icon-button
+        class="icono"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon class="white-icon">logout</mat-icon>
+
+      </a >
+        <a *ngIf="!loginService.isLoggedIn()" class="nav-link-login" href="login"><mat-icon>account_circle</mat-icon></a>
+    </div>
+  </div>
+</nav>
+

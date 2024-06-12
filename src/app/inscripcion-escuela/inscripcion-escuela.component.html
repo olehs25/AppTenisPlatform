@@ -1,0 +1,22 @@
+<div class="container" *ngIf="!isSubscribed; else subscribedTemplate">
+  <h2>Inscríbete en la Escuela de Tenis</h2>
+  <p>Únete a nuestra escuela de tenis y mejora tus habilidades mientras te diviertes!</p>
+
+  <button mat-raised-button color="primary" (click)="onSubscribe()">Inscribirse ahora</button>
+
+  <div *ngIf="paymentSuccessful" class="payment-success">
+    <h3>Pago realizado con éxito!</h3>
+  </div>
+</div>
+
+<ng-template #subscribedTemplate>
+  <div class="subscribed-container">
+    <h2>¡Ya estás inscrito en la Escuela de Tenis!</h2>
+    <button mat-raised-button color="primary" (click)="connectToRobot()">Conectar con el Robot</button>
+    <br><br>
+    <div class="user-dashboard">
+      <p>Estamos encantados de que te hayas inscrito. Aquí tienes la planificación semanal de actividades:</p>
+      <app-weekly-plan></app-weekly-plan>
+    </div>
+  </div>
+</ng-template>

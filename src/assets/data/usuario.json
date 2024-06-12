@@ -1,0 +1,12 @@
+{
+  "id": 1,
+"nombre": "Oleh",
+"apellidos": "Sobolevskyy",
+"dni": "xxxxxxxxx",
+"email": "oleh@gmail.com",
+"telefono": "666666666",
+"fecha_nacimiento": "22/02/1997",
+"password": "xxxxxxxxx",
+"rol": "admin",
+"active": true
+}

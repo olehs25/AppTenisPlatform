@@ -1,0 +1,30 @@
+.container, .subscribed-container {
+  max-width: 600px;
+  margin: 150px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.payment-success {
+  margin-top: 20px;
+  color: green;
+}
+
+.subscribed-container {
+  text-align: center;
+}
+
+.chat-section {
+  margin-top: 40px;
+}
+
+.chat-section button {
+  margin-bottom: 10px;
+}

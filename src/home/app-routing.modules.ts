@@ -8,10 +8,14 @@ import {ProfileComponent} from "../app/profile/profile.component";
 import {RegisterComponent} from "../app/register/register.component";
 import {MapComponent} from "../app/map/map.component";
 import {EditProfileComponent} from "../app/edit-profile/edit-profile.component";
+import {DashboardComponent} from "../app/dashboard/dashboard.component";
+import {ReservationComponent} from "../app/reservation/reservation.component";
+import {PaymentComponent} from "../app/payment/payment.component";
+import {InscripcionEscuelaComponent} from "../app/inscripcion-escuela/inscripcion-escuela.component";
 
 const routes: Routes = [
   {
-    path: 'home', component: TenisDashboardComponent
+    path: 'home', component: DashboardComponent
   },
   {
     path: 'login', component: LoginComponent
@@ -29,8 +33,21 @@ const routes: Routes = [
     path: 'edit-profile', component: EditProfileComponent
   },
   {
-    path: '**', component: TenisDashboardComponent
+    path: 'profile', component: ProfileComponent
   },
+  {
+    path: 'reservation', component: ReservationComponent
+  },
+  {
+    path: 'payment', component: PaymentComponent
+  },
+  {
+    path: 'inscription', component: InscripcionEscuelaComponent
+  },
+  {
+    path: '**', component: DashboardComponent
+  },
+
 
 ]
 

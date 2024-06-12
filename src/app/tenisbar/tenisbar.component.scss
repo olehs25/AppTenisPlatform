@@ -1,0 +1,31 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.icono{
+  color: #bdb6d9;
+
+}
+.nav-link-login{
+  color: #bdb6d9;
+  width: 40px;
+}
+
+.logo-img {
+  height: 55px; /* Ajusta la altura según sea necesario */
+  margin-right: 10px; /* Espacio entre el logo y el texto */
+}

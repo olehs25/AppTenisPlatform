@@ -1,0 +1,35 @@
+.fields {
+    width: 30%;
+    margin-right: auto;
+     align-items: center;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #6e5cb0;
+    margin-bottom: 50px;
+}
+
+.button{
+    color: #7f70b0;
+}
+
+.button:hover{
+  background-color: #7f70b0;
+}
+
+.image{
+  margin-bottom: 20px;
+}
+
+.d-grid gap-2{
+  height: 20px;
+  display: flex;
+}
+
+
+
+

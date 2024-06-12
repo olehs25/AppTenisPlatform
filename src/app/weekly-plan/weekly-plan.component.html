@@ -1,0 +1,44 @@
+<mat-card class="weekly-plan-card">
+  <mat-card-header>
+    <mat-card-title>Planificación Semanal de Actividades</mat-card-title>
+    <button *ngIf="isAdmin && !isEditMode" mat-button (click)="toggleEditMode()">Editar</button>
+    <button *ngIf="isAdmin && isEditMode" mat-button (click)="savePlan()">Guardar</button>
+    <button *ngIf="isAdmin && isEditMode" mat-button (click)="cancelEditMode()">Cancelar</button>
+  </mat-card-header>
+  <mat-card-content>
+    <section>
+      <h3>Martes</h3>
+      <p><strong>Clase de 1 hora</strong></p>
+      <p><strong>Objetivo:</strong> Técnica de golpes y movilidad en la cancha</p>
+      <ul>
+        <li *ngFor="let item of plan.martes">
+          <strong>{{item.time}}:</strong>
+          <span *ngIf="!isEditMode">{{item.activity}}</span>
+          <input *ngIf="isEditMode" [(ngModel)]="item.activity" class="form-control" />
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h3>Jueves</h3>
+      <p><strong>Clase de 1 hora</strong></p>
+      <p><strong>Objetivo:</strong> Servicio y juego en la red</p>
+      <ul>
+        <li *ngFor="let item of plan.jueves">
+          <strong>{{item.time}}:</strong>
+          <span *ngIf="!isEditMode">{{item.activity}}</span>
+          <input *ngIf="isEditMode" [(ngModel)]="item.activity" class="form-control" />
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h3>Descripción de los Juegos y Ejercicios</h3>
+      <ul>
+        <li *ngFor="let desc of plan.descripcion">
+          <strong>{{desc.title}}:</strong>
+          <span *ngIf="!isEditMode">{{desc.description}}</span>
+          <textarea *ngIf="isEditMode" [(ngModel)]="desc.description" class="form-control"></textarea>
+        </li>
+      </ul>
+    </section>
+  </mat-card-content>
+</mat-card>
