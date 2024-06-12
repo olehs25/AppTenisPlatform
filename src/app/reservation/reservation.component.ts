@@ -7,7 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { ReservationService } from "../services/reservation.service";
 import { reservationDTO } from "../models/reservationDTO";
 import { AuthService } from "../services/auth.service";
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -48,14 +48,18 @@ export class ReservationComponent {
 
   currentEvents: EventApi[] = [];
 
-  constructor(public dialog: MatDialog, public reservationService: ReservationService, public authService: AuthService) {}
+  constructor(public dialog: MatDialog, public reservationService: ReservationService, public authService: AuthService,
+  private router: Router) {}
 
   ngOnInit(): void {
     this.loadReservations();
   }
 
     loadReservations() {
-        const loggedInUserEmail = this.authService.getUserEmail() || 'user@example.com';
+        let loggedInUserEmail = this.authService.getUserEmail()
+      if(loggedInUserEmail==''){
+        loggedInUserEmail = 'user@example.com';
+      }
 
         this.reservationService.getAllReservations().subscribe((reservations: reservationDTO[]) => {
             const events = reservations.map(reservation => ({
@@ -67,6 +71,7 @@ export class ReservationComponent {
                     email: reservation.userEmail,
                     price: 3, // assuming a fixed price
                     isPaid: reservation.isPaid,
+                    id: reservation.id,
                     isEditable: reservation.userEmail === loggedInUserEmail
                 }
             }));
@@ -83,15 +88,17 @@ export class ReservationComponent {
     const endDate = new Date(selectInfo.start);
     endDate.setHours(endDate.getHours() + 1);
 
-    const email = this.authService.getUserEmail() || 'user@example.com'; // Obtener email del local storage
-
+    let loggedInUserEmail = this.authService.getUserEmail()
+    if(loggedInUserEmail==''){
+      loggedInUserEmail = 'user@example.com';
+    }
     const dialogRef = this.dialog.open(ReservationDialog, {
       width: '300px',
       data: {
-        title: '',
+
         start: selectInfo.start,
         end: endDate,
-        email: email,
+        email: loggedInUserEmail,
         price: 3
       }
     });
@@ -99,6 +106,7 @@ export class ReservationComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         const newReservation: reservationDTO = {
+          id: 0,
           userEmail: result.email,
           startDate: selectInfo.startStr,
           endDate: selectInfo.endStr,
@@ -107,13 +115,22 @@ export class ReservationComponent {
 
         this.reservationService.registrarReserva(newReservation).subscribe(reservation => {
           calendarApi.addEvent({
-            title: result.title,
+
             start: selectInfo.startStr,
             end: selectInfo.endStr,
             email: result.email,
             allDay: false,
             extendedProps: {
+              price: result.price
+            }
+          });
+          // Redirigir a la página de pago
+          this.router.navigate(['/payment'], {
+            queryParams: {
 
+              userMail: result.email,
+              start: selectInfo.startStr,
+              end: selectInfo.endStr,
               price: result.price
             }
           });
@@ -125,7 +142,10 @@ export class ReservationComponent {
   }
 
   handleEventClick(clickInfo: EventClickArg) {
-    const loggedInUserEmail = this.authService.getUserEmail() || 'user@example.com';
+    let loggedInUserEmail = this.authService.getUserEmail()
+    if(loggedInUserEmail==''){
+      loggedInUserEmail = 'user@example.com';
+    }
     if (clickInfo.event.extendedProps['email'] !== loggedInUserEmail) {
       // Prevent showing details or allowing deletion if not the owner
       return;
@@ -134,8 +154,7 @@ export class ReservationComponent {
     const dialogRef = this.dialog.open(ViewReservationDialog, {
       width: '300px',
       data: {
-        id: clickInfo.event.id,
-        title: clickInfo.event.title,
+        id: clickInfo.event.extendedProps['id'],
         start: clickInfo.event.start,
         end: clickInfo.event.end,
         email: clickInfo.event.extendedProps['email'],
@@ -145,7 +164,12 @@ export class ReservationComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'delete') {
-        clickInfo.event.remove();
+        console.log("IDDDDDDDDDDDDDDDDD: "+clickInfo.event.extendedProps['id'])
+        this.reservationService.borrarReserva(clickInfo.event.extendedProps['id']).subscribe(() => {
+          clickInfo.event.remove();
+        }, error => {
+          console.error('Error deleting reservation:', error);
+        });
       }
     });
   }
@@ -166,10 +190,7 @@ export function createEventId() {
   template: `
     <h1 mat-dialog-title>Create Reservation</h1>
     <div mat-dialog-content>
-      <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput [(ngModel)]="data.title">
-      </mat-form-field>
+
       <p><strong>Start:</strong> {{data.start | date:'short'}}</p>
       <p><strong>End:</strong> {{data.end | date:'short'}}</p>
       <p><strong>Email:</strong> {{data.email}}</p>
@@ -198,7 +219,7 @@ export class ReservationDialog {
   template: `
     <h1 mat-dialog-title>Reservation Details</h1>
     <div mat-dialog-content>
-      <p><strong>Title:</strong> {{data.title}}</p>
+
       <p><strong>Start:</strong> {{data.start | date:'short'}}</p>
       <p><strong>End:</strong> {{data.end | date:'short'}}</p>
       <p><strong>Email:</strong> {{data.email}}</p>

@@ -1,40 +1,43 @@
 <!-- EDITAR USUARIO -->
-
-<form *ngIf="inputData.title === 'Editar usuario'" [formGroup]="myform" (ngSubmit)="updateUsuario()" >
+<form *ngIf="inputData.title === 'Editar usuario'" [formGroup]="myform" (ngSubmit)="updateUsuario()" class="edit-user-form">
   <div class="centrado-popup">
     <button mat-icon-button class="close-button" [mat-dialog-close]="true">
       <mat-icon class="close" color="warn">close</mat-icon>
     </button>
-    <h1 mat-dialog-title>Editar perfil</h1>
+    <h1 mat-dialog-title>Editar Perfil</h1>
     <div mat-dialog-content>
-      <mat-form-field class="full-width">
-        <mat-label>Full Name</mat-label>
-        <input matInput formControlName="fullName" placeholder="fullName" name="fullName" required type="text"/>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput formControlName="fullName" placeholder="Nombre Completo" required type="text"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>User Name</mat-label>
-        <input matInput formControlName="username" placeholder="username" name="username" required type="text"/>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Nombre de Usuario</mat-label>
+        <input matInput formControlName="username" placeholder="Nombre de Usuario" required type="text"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="Email" name="email" required type="email"/>
+        <input matInput formControlName="email" placeholder="Email" required type="email"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Personal Phone</mat-label>
-        <input matInput formControlName="personalPhone" placeholder="personalPhone" name="personalPhone" required type="text"/>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Teléfono Personal</mat-label>
+        <input matInput formControlName="personalPhone" placeholder="Teléfono Personal" required type="text"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" appearance="fill">
         <mat-label>NIF/NIE</mat-label>
-        <input matInput formControlName="nif" placeholder="nif" name="nif" required type="text"/>
+        <input matInput formControlName="nif" placeholder="NIF/NIE" required type="text"/>
       </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Country</mat-label>
-        <input matInput formControlName="country" placeholder="country" name="country" required type="text"/>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>País</mat-label>
+        <input matInput formControlName="country" placeholder="País" required type="text"/>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" type="password" [type]="hide ? 'password' : 'text'" class="small-placeholder" placeholder="Actualiza o introduce la actual para mantenerla" required />
+        <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="primary-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
     </div>
   </div>
   <div mat-dialog-actions class="centrado-solo">
     <button mat-raised-button color="primary">Actualizar Datos</button>
-    <br>
   </div>
 </form>

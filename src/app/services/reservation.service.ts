@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {API_URL, API_URL_CHECK_EMAIL, API_URL_REGISTER, API_URL_RESERVATION} from "./helper";
+import { API_URL_RESERVATION} from "./helper";
 import {reservationDTO} from "../models/reservationDTO";
 import {catchError, Observable, of, throwError} from "rxjs";
 
@@ -49,8 +49,8 @@ export class ReservationService {
     return this.httpClient.post(API_URL_RESERVATION+"putReservation", reservation);
   }
 
-  public borrarReserva(id:number){
-    return this.httpClient.get(API_URL_RESERVATION+"deleteReservation/"+id);
+  public borrarReserva(id:any){
+    return this.httpClient.delete(API_URL_RESERVATION+"deleteReservation/"+id);
   }
 
   private handleError(error:HttpErrorResponse){

@@ -10,6 +10,8 @@ import {MapComponent} from "../app/map/map.component";
 import {EditProfileComponent} from "../app/edit-profile/edit-profile.component";
 import {DashboardComponent} from "../app/dashboard/dashboard.component";
 import {ReservationComponent} from "../app/reservation/reservation.component";
+import {PaymentComponent} from "../app/payment/payment.component";
+import {InscripcionEscuelaComponent} from "../app/inscripcion-escuela/inscripcion-escuela.component";
 
 const routes: Routes = [
   {
@@ -33,11 +35,17 @@ const routes: Routes = [
   {
     path: 'profile', component: ProfileComponent
   },
- // {
-   // path: '**', component: DashboardComponent
-  //},
   {
     path: 'reservation', component: ReservationComponent
+  },
+  {
+    path: 'payment', component: PaymentComponent
+  },
+  {
+    path: 'inscription', component: InscripcionEscuelaComponent
+  },
+  {
+    path: '**', component: DashboardComponent
   },
 
 

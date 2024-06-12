@@ -56,7 +56,7 @@ export class LoginComponent {
             this.loginService.setUser(user);
             this.loginService.loginUser(data.token);
             if(this.loginService.getUserRole()=='ADMIN'){
-              window.location.href = 'http://localhost:8081/';
+              window.location.href = 'http://localhost:8081/user';
               //this.router.navigate(['profile']);
               this.loginService.loginStatusSubject.next(true);
               // window.location.reload();

@@ -81,7 +81,28 @@ export class AuthService {
   //Obtenemos el email del usuario
   getUserEmail(){
     let user = this.getUser();
+    if(user==null)
+      user.email= 'user@example.com';
     return user.email;
+  }
+
+  //Obtenemos el email del usuario
+  getUserIsSuscribed(){
+    let user = this.getUser();
+    console.log("suscrito a la escuela: "+user.isSuscribed)
+    return user.isSuscribed;
+  }
+
+  //Obtenemos el email del usuario
+  getUserId(){
+    let user = this.getUser();
+    console.log("suscrito a la escuela: "+user.id)
+    return user.id;
+  }
+
+  setIsSuscribed(user: any){
+
+    this.setUser(user)
   }
 
   public getCurrentUser(username:any){

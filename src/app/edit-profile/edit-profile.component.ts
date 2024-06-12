@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import {hide} from "@popperjs/core";
 
 @Component({
   selector: 'app-edit-profile',
@@ -29,10 +30,12 @@ export class EditProfileComponent {
     personalPhone: '',
     nif: '',
     country: '',
+    password: '',
 
   };
   inputData: any;
   editData: any;
+  hide = true;
 
   myform = this.builder.group({
     fullName: this.builder.control(''),
@@ -41,6 +44,7 @@ export class EditProfileComponent {
     personalPhone: this.builder.control(''),
     nif: this.builder.control(''),
     country: this.builder.control(''),
+    password: this.builder.control('')
   });
 
 
@@ -81,6 +85,7 @@ export class EditProfileComponent {
           personalPhone: this.editData.personalPhone,
           nif: this.editData.nif,
           country: this.editData.country,
+          password: ''
         });
       },
       (error) => {
@@ -95,4 +100,5 @@ export class EditProfileComponent {
       this.setPopUpData(this.inputData.id);
     }
   }
+
 }

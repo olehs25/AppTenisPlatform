@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import usuarioJson from '../assets/data/usuario.json'
+import { InactivityService } from "../app/services/inactivity.service";
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import usuarioJson from '../assets/data/usuario.json'
 export class AppComponent {
   title = 'Escuela Tenis Olula del Rio';
 
-  public constructor() {
+  public constructor(private inactivityService: InactivityService) {
   }
 
 }

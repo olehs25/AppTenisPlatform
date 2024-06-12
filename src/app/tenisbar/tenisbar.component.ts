@@ -14,8 +14,11 @@ import {userDTO} from "../models/userDTO";
 export class TenisbarComponent implements OnInit{
   private breakpointObserver = inject(BreakpointObserver);
   fullName?:string;
+  isAdmin: boolean = false;
   constructor(public loginService: AuthService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.checkIfAdmin();
+  }
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -44,5 +47,13 @@ export class TenisbarComponent implements OnInit{
   public getUserFullName(){
     this.fullName = this.loginService.getUserFullName()
     return this.fullName
+  }
+
+  checkIfAdmin() {
+    const userRole = this.loginService.getUserRole();
+    if (this.loginService.isLoggedIn() && userRole === 'ADMIN') {
+      console.log("ROLLLLLLLLLL: "+userRole)
+      this.isAdmin = true;
+    }
   }
 }

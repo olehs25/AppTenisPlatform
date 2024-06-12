@@ -14,4 +14,5 @@ export interface userDTO {
   username?: string;
   creationDate?: Date;
   area?: string;
+  isSuscribed: boolean;
 }

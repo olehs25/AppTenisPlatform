@@ -46,10 +46,9 @@ export class ProfileComponent implements OnInit{
     });
 
     _popUp.afterClosed().subscribe((result) => {
-      this.cargarUsuario();
     });
-
-    return this.user;
+    this.cargarUsuario();
+    return this.authService.getUser();
   }
 
   editarUsuario(id: number) {

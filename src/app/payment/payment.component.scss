@@ -1,9 +1,13 @@
-.container {
+.payment-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 37px;
   gap: 20px;
+}
+
+.payment-container{
+  align-content: center;
 }
 
 .map-card, .info-card {

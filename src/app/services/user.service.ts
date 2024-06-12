@@ -51,6 +51,11 @@ export class UserService {
   public actualizarUsuario(id:number, usuario:any){
     return this.httpClient.put(API_URL+"/updateUser/"+id, usuario);
   }
+
+  subscribeUser(userId: number): Observable<any> {
+    return this.httpClient.put<any>(API_URL+"/"+userId+"/subscribe", {});
+  }
+
   private handleError(error:HttpErrorResponse){
     if(error.status==0){
       console.error('Se ha producido un error ',error.status, error.error)
