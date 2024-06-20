@@ -1,0 +1,241 @@
+{
+  "TITLE": "OLULA DEL RIO TENNIS SCHOOL",
+  "WELCOME": "Welcome to the Olula del Rio Tennis School",
+  "ENJOY": "Enjoy our modern facilities and our classes taught by tennis professionals. You can reserve courts and participate in our events and tournaments. Join up\n to our community of tennis lovers!",
+  "LARGE_TEXT": "The club facilities are located in a unique environment of 5,000 m2 surrounded by large trees, a swimming pool, fourteen tennis courts, a 7-a-side soccer field, five paddle tennis courts, baskets and a new gym. This is attractive for any athlete, but it is much more than that. Our restaurant around the pool allows you to reconcile social life with sports. Theme parties, Christmas, etc. To this you must add the peace of mind of parents when there is no school with the club's wild card. Your children will enjoy the outdoors at summer school, Christmas school and sports days.",
+
+  "DASHBOARD": {
+    "WHY_CHOOSE": "Why choose Club de Tenis Olula del Rio",
+    "WHY_CHOOSE_BODY": "Choose Club de Tenis Olula del Río for our modern facilities, professional coaches, and a community passionate about tennis. Enjoy personalized classes tailored to your level and goals, ensuring effective training to improve your game. Participate in exciting tournaments that foster a competitive and stimulating environment. Join a community dedicated to tennis excellence, where each member is valued and supported on their journey to improvement and enjoyment of the sport.",
+    "TENNIS_SCHOOL": "Tennis School",
+    "TENNIS_SCHOOL_BODY": "Start a new era of Tennis at Olula del Rio! Practice this wonderful sport with us in a fun, motivating, professional, healthy, and beneficial way.",
+    "COURT_RESERVATION": "Court Reservation",
+    "COURT_RESERVATION_BODY": "Reserve courts in Olula del Río to enjoy first-class facilities, a spectacular natural environment, and impeccable maintenance.",
+    "FACILITIES": "Facilities",
+    "FACILITIES_BODY": "Our facilities in Olula del Río include 2 high-quality tennis courts, a pool, and green areas for relaxation. We also have 3 padel courts, a football 7 field, and a cozy restaurant to enjoy after the game. All this in a well-kept natural environment that promotes well-being and sports activity."
+  },
+
+  "TENIS_SCHOOL": "Tenis School",
+  "RESERVATIONS": "Reservations",
+  "FACILITIES": "Facilities",
+  "PROFILE": "Profile",
+  "LOGIN_DASH": "Log In",
+
+
+  "USER_PROFILE": {
+    "EDIT_BUTTON": "Edit Data",
+    "USERNAME": "Username",
+    "NIF_NIE": "NIF/NIE",
+    "PERSONAL_PHONE": "Personal Phone",
+    "COUNTRY": "Country",
+    "CREATION_DATE": "Creation Date",
+    "UPDATE_PASSWORD":"Update pass"
+  },
+
+  "MAP_CARD": {
+    "TITLE": "Facilities Map",
+    "POPUP_TEXT": "Pistas de Tenis Olula del Rio"
+  },
+  "INFO_CARD": {
+    "TITLE": "Club Information",
+    "SCHOOL": "Sports school in Spain",
+    "ADDRESS": "Address: Av. Vereda de Olula, 04860 Olula del Río, Almería",
+    "PHONE": "Phone: 606 05 92 08",
+    "SCHEDULE": "Schedule: Tuesday and Thursday 17:00–21:00",
+    "PROVINCE": "Province: Almería"
+  },
+
+  "CREATE_RESERVATION": "Create Reservation",
+  "RESERVATION_DETAILS": "Reservation Details",
+  "START": "Start",
+  "END": "End",
+  "EMAIL": "Email",
+  "PRICE": "Price",
+  "CANCEL": "Cancel",
+  "CONFIRM": "Confirm",
+  "CLOSE": "Close",
+  "DELETE": "Delete",
+  "RESERVED": "Reserved",
+
+  "EDIT_USER": {
+    "TITLE": "Edit Profile",
+    "FULL_NAME": "Full Name",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PERSONAL_PHONE": "Personal Phone",
+    "NIF_NIE": "NIF/NIE",
+    "COUNTRY": "Country",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Update or enter the current one to keep it",
+    "UPDATE_BUTTON": "Update Data",
+    "CLOSE": "Close",
+
+    "EDIT_USER": {
+      "TITLE": "Editar Perfil",
+      "FULL_NAME": "Nombre Completo",
+      "USERNAME": "Nombre de Usuario",
+      "EMAIL": "Email",
+      "PERSONAL_PHONE": "Teléfono Personal",
+      "NIF_NIE": "NIF/NIE",
+      "COUNTRY": "País",
+      "PASSWORD": "Contraseña",
+      "PASSWORD_PLACEHOLDER": "Actualiza o introduce la actual para mantenerla",
+      "UPDATE_BUTTON": "Actualizar Datos",
+      "CLOSE": "Cerrar"
+    }
+  },
+
+  "TENNIS_SCHOOL": {
+    "TITLE": "Join the Tennis School",
+    "DESCRIPTION": "Join our tennis school and improve your skills while having fun!",
+    "SUBSCRIBE_BUTTON": "Subscribe now",
+    "PAYMENT_SUCCESS": "Payment successful!",
+    "ALREADY_SUBSCRIBED_TITLE": "You are already subscribed to the Tennis School!",
+    "UIPATH_JOBS_TITLE": "UiPath Jobs",
+    "START_JOB_BUTTON": "Start Job",
+    "USER_DASHBOARD_DESCRIPTION": "We are delighted that you have enrolled. Here is the weekly activity plan:"
+  },
+
+  "LOGIN": {
+    "TITLE": "Login",
+    "USERNAME": "Username",
+    "USERNAME_PLACEHOLDER": "Enter your Username",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter your password",
+    "LOGIN_BUTTON": "Login",
+    "RESET_BUTTON": "Reset",
+    "REGISTER_PROMPT": "If you don't have an account,",
+    "REGISTER_LINK": "Register here",
+    "RECOVER_PROMPT": "To recover your username or password, click",
+    "RECOVER_LINK": "here",
+    "USER_REQUIRED": "User required",
+    "USER_REQUIRED_TEXT": "You must enter a valid username to log in",
+    "PASSWORD_REQUIRED": "Password required",
+    "PASSWORD_REQUIRED_TEXT": "You must enter a valid password to log in",
+    "PERMISSION_DENIED": "Permission denied",
+    "PERMISSION_DENIED_TEXT": "You do not have permission to access this page",
+    "ERROR": "Error",
+    "INVALID_CREDENTIALS": "Email or password incorrect",
+    "OK": "Ok",
+    "ACCEPT": "Accept"
+  },
+
+  "PAYMENT_PAGE": {
+    "TITLE": "Payment Page",
+    "RESERVATION_DETAILS": {
+      "USER_EMAIL": "User Email",
+      "RESERVATION_START": "Reservation start",
+      "RESERVATION_END": "Reservation end",
+      "PRICE": "Price"
+    },
+    "PAYMENT_METHODS": {
+      "TITLE": "Choose Payment Method",
+      "CREDIT_CARD": "Credit Card",
+      "PAYPAL": "PayPal",
+      "MANO": "Pay in hand"
+    },
+    "CREDIT_CARD_FORM": {
+      "TITLE": "Credit Card Information",
+      "CARD_NUMBER": "Card Number",
+      "EXPIRY_DATE": "Expiry Date",
+      "CVV": "CVV",
+      "PAY_BUTTON": "Pay with Credit Card"
+    },
+    "PAYPAL_FORM": {
+      "TITLE": "Pay with PayPal",
+      "PAY_BUTTON": "Pay with PayPal"
+    },
+    "MANO_FORM": {
+      "INSTRUCTION": "Approach the court and pay the amount described above to the maintenance manager in hand within the next 5 days after the reservation. The dependent will receive a notification about your reservation."
+    },
+    "CONFIRM_BUTTON": "Confirm reservation"
+  },
+
+  "REGISTER_PAGE": {
+    "TITLE": "Registration Page",
+    "FULL_NAME": "Full Name",
+    "FULL_NAME_PLACEHOLDER": "Enter your full name",
+    "COUNTRY": "Country",
+    "COUNTRY_PLACEHOLDER": "Enter your country of origin",
+    "EMAIL": "Email",
+    "EMAIL_PLACEHOLDER": "Enter your email",
+    "PHONE": "Phone",
+    "PHONE_PLACEHOLDER": "Enter your phone number",
+    "LANGUAGE": "Language",
+    "LANGUAGE_PLACEHOLDER": "Enter your language",
+    "PASSWORD": "Password",
+    "PASSWORD_PLACEHOLDER": "Enter a secure password",
+    "NIF": "NIF/NIE",
+    "NIF_PLACEHOLDER": "Enter your NIF/NIE",
+    "REGISTER_BUTTON": "Register",
+    "LOGIN_PROMPT": "If you already have an account,",
+    "LOGIN_LINK": "log in here",
+    "MANDATORY_FIELDS": "Mandatory fields",
+    "ALL_FIELDS_REQUIRED": "All fields are required",
+    "PASSWORD_MISMATCH": "Passwords do not match",
+    "PASSWORDS_DO_NOT_MATCH": "The passwords do not match",
+    "ACCEPT": "Accept",
+    "REPEAT_PASSWORD": "Repeat Password",
+    "REPEAT_PASSWORD_PLACEHOLDER": "Repeat the password",
+    "USERNAME": "Your username is"
+  },
+
+  "REGISTER": {
+    "REQUIRED_FIELDS": "Mandatory fields",
+    "REQUIRED_FIELDS_MSG": "All fields are required",
+    "INVALID_EMAIL": "Invalid email",
+    "INVALID_EMAIL_MSG": "The email entered is not valid",
+    "INVALID_PHONE": "Invalid phone number",
+    "INVALID_PHONE_MSG": "The phone number must be 9 digits",
+    "INVALID_PASSWORD": "Invalid password",
+    "INVALID_PASSWORD_MSG": "The password must be at least 8 characters",
+    "PASSWORD_MISMATCH": "Passwords do not match",
+    "PASSWORD_MISMATCH_MSG": "The passwords do not match",
+    "EMAIL_REGISTERED": "Email already registered",
+    "EMAIL_ALREADY_REGISTERED": "The email entered is already registered in the system",
+    "USER_REGISTERED": "User registered",
+    "USER_REGISTERED_MSG": "User registered successfully",
+    "REGISTRATION_ERROR": "Registration error",
+    "REGISTRATION_ERROR_MSG": "There was an error in the registration",
+    "CHECK_ERROR": "Error",
+    "CHECK_ERROR_MSG": "Error checking email",
+    "ACCEPT": "Accept"
+  },
+
+  "WEEKLY_PLAN": {
+    "DOWNLOAD_PDF": "Download PDF",
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "TITLE": "Weekly Activity Plan",
+    "TUESDAY": "Tuesday",
+    "THURSDAY": "Thursday",
+    "ONE_HOUR_CLASS": "One hour class",
+    "OBJECTIVE": "Objective",
+    "DESCRIPTION": "Description of Games and Exercises"
+  },
+
+  "EDIT_PROFILE": {
+    "MODIFIED_SUCCESS": "Datos modificados",
+    "MODIFIED_SUCCESS_TEXT": "Datos del usuario modificados correctamente",
+    "MODIFIED_ERROR": "Datos no modificados",
+    "MODIFIED_ERROR_TEXT": "Los datos del usuario no se han podido modificar",
+    "ACCEPT": "Aceptar",
+    "FULL_NAME": "Nombre Completo",
+    "USERNAME": "Nombre de Usuario",
+    "EMAIL": "Email",
+    "PERSONAL_PHONE": "Teléfono Personal",
+    "NIF": "NIF/NIE",
+    "COUNTRY": "País",
+    "PASSWORD": "Contraseña",
+    "PLACEHOLDER_PASSWORD": "Actualiza o introduce la actual para mantenerla"
+  },
+
+  "TENISBAR": {
+    "LOGOUT_TITLE": "Do you want to log out?",
+    "LOGOUT_TEXT": "The current session will be closed",
+    "LOGOUT_CONFIRM": "Accept",
+    "LOGOUT_CANCEL": "Cancel",
+    "LOGOUT_SUCCESS": "Session closed successfully"
+  }
+}

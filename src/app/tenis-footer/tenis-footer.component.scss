@@ -1,7 +1,25 @@
-.bt-light{
-  background-color: #b086ee !important;
+footer .btn-floating {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+footer .btn-floating i {
+  font-size: 1.5rem;
+}
+
+footer .btn-floating:hover {
+  opacity: 0.8;
+}
+
+footer {
+  background-color: rgb(111, 81, 157) !important;
+}
+
+footer .text-center {
+  background-color: rgb(111, 81, 157) !important;
 }

@@ -1,27 +1,41 @@
 .grid-container {
-  padding: 1vw;
-
+  padding: 1%;
 }
 
 .dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-  background-color: #acd77a;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  background-color: #8d81b7;
   color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px;
+  padding: 1rem;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+mat-card-content {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  margin-bottom: 10px;
+
 }
 
-.dashboard-card-content {
-  text-align: left;
+.card-title {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: bold;
 }
+
 
 mat-card-img{
   width: 100%;
@@ -46,23 +60,44 @@ h1 {
   -webkit-text-stroke-width: 0.3px;
   -webkit-text-stroke-color: black;
 }
-.centrado{
+
+.centrado {
   position: absolute;
-  top: 40%;
-  bottom: 30%;
-  left: 30%;
-  right: 30%;
-  font-size: 4.5vw;
-  letter-spacing: -2px;
-  word-spacing: 1px;
-  line-height: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4vw;
+  letter-spacing: -1px;
+  word-spacing: 2px;
+  line-height: 1.2;
   color: #4d4470;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
   font-weight: 1000;
   font-family: Garamond, serif;
-  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+  backdrop-filter: blur(5px); /* Desenfoque más suave */
+  border-radius: 15px; /* Bordes redondeados */
   -webkit-filter: drop-shadow(0.2vw 1px 1px black);
+  padding: 1.5vw 3vw; /* Aumentar el padding para cubrir todo el texto */
+  animation: fadeIn 2s ease-in-out;
+}
+
+/* Animación para la entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .centrado {
+    font-size: 3.5vw;
+    padding: 1.5vw 3vw;
+  }
 }
 
 .slide-container {
@@ -87,10 +122,20 @@ h1 {
   }
 }
 
+.carousel-img:hover {
+  transform: scale(1.05);
+}
+
 .video-container {
   width: 20%;
   max-width: 600px;
   margin: auto;
+  animation: fadeIn 0.5s ease-in;
+  transition: transform 0.3s, box-shadow 0.3s;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 }
 
 @media (max-width: 600px) {

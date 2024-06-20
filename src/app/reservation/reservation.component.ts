@@ -8,6 +8,7 @@ import { ReservationService } from "../services/reservation.service";
 import { reservationDTO } from "../models/reservationDTO";
 import { AuthService } from "../services/auth.service";
 import { Router } from '@angular/router';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-reservation',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./reservation.component.scss']
 })
 export class ReservationComponent {
+  isAdmin: boolean = false;
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridWeek',
     headerToolbar: {
@@ -52,7 +54,19 @@ export class ReservationComponent {
   private router: Router) {}
 
   ngOnInit(): void {
+    this.checkIfAdmin();
     this.loadReservations();
+  }
+  goToReservationList(): void {
+    this.router.navigate(['/reservation-list']);
+  }
+
+  checkIfAdmin() {
+    const userRole = this.authService.getUserRole();
+    if (this.authService.isLoggedIn() && userRole === 'ADMIN') {
+      console.log("ROLLLLLLLLLL: " + userRole);
+      this.isAdmin = true;
+    }
   }
 
     loadReservations() {
@@ -188,17 +202,16 @@ export function createEventId() {
 @Component({
   selector: 'reservation-dialog',
   template: `
-    <h1 mat-dialog-title>Create Reservation</h1>
+    <h1 mat-dialog-title>{{ 'CREATE_RESERVATION' | translate }}</h1>
     <div mat-dialog-content>
-
-      <p><strong>Start:</strong> {{data.start | date:'short'}}</p>
-      <p><strong>End:</strong> {{data.end | date:'short'}}</p>
-      <p><strong>Email:</strong> {{data.email}}</p>
-      <p><strong>Price:</strong> {{data.price}} EUR</p>
+      <p><strong>{{ 'START' | translate }}:</strong> {{data.start | date:'short'}}</p>
+      <p><strong>{{ 'END' | translate }}:</strong> {{data.end | date:'short'}}</p>
+      <p><strong>{{ 'EMAIL' | translate }}:</strong> {{data.email}}</p>
+      <p><strong>{{ 'PRICE' | translate }}:</strong> {{data.price}} EUR</p>
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="onCancel()">Cancel</button>
-      <button mat-button [mat-dialog-close]="data">Confirm</button>
+      <button mat-button (click)="onCancel()">{{ 'CANCEL' | translate }}</button>
+      <button mat-button [mat-dialog-close]="data">{{ 'CONFIRM' | translate }}</button>
     </div>
   `,
 })
@@ -217,17 +230,16 @@ export class ReservationDialog {
 @Component({
   selector: 'view-reservation-dialog',
   template: `
-    <h1 mat-dialog-title>Reservation Details</h1>
+    <h1 mat-dialog-title>{{ 'RESERVATION_DETAILS' | translate }}</h1>
     <div mat-dialog-content>
-
-      <p><strong>Start:</strong> {{data.start | date:'short'}}</p>
-      <p><strong>End:</strong> {{data.end | date:'short'}}</p>
-      <p><strong>Email:</strong> {{data.email}}</p>
-      <p><strong>Price:</strong> {{data.price}} EUR</p>
+      <p><strong>{{ 'START' | translate }}:</strong> {{data.start | date:'short'}}</p>
+      <p><strong>{{ 'END' | translate }}:</strong> {{data.end | date:'short'}}</p>
+      <p><strong>{{ 'EMAIL' | translate }}:</strong> {{data.email}}</p>
+      <p><strong>{{ 'PRICE' | translate }}:</strong> {{data.price}} EUR</p>
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="onClose()">Close</button>
-      <button mat-button color="warn" (click)="onDelete()">Delete</button>
+      <button mat-button (click)="onClose()">{{ 'CLOSE' | translate }}</button>
+      <button mat-button color="warn" (click)="onDelete()">{{ 'DELETE' | translate }}</button>
     </div>
   `,
 })
@@ -244,4 +256,6 @@ export class ViewReservationDialog {
   onDelete(): void {
     this.dialogRef.close('delete');
   }
+
+
 }

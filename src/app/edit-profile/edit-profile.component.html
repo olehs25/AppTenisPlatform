@@ -4,40 +4,35 @@
     <button mat-icon-button class="close-button" [mat-dialog-close]="true">
       <mat-icon class="close" color="warn">close</mat-icon>
     </button>
-    <h1 mat-dialog-title>Editar Perfil</h1>
+    <h1 mat-dialog-title>{{ 'EDIT_USER.TITLE' | translate }}</h1>
     <div mat-dialog-content>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Nombre Completo</mat-label>
-        <input matInput formControlName="fullName" placeholder="Nombre Completo" required type="text"/>
+        <mat-label>{{ 'EDIT_USER.FULL_NAME' | translate }}</mat-label>
+        <input matInput formControlName="fullName" placeholder="{{ 'EDIT_USER.FULL_NAME' | translate }}" required type="text"/>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Nombre de Usuario</mat-label>
-        <input matInput formControlName="username" placeholder="Nombre de Usuario" required type="text"/>
+        <mat-label>{{ 'EDIT_USER.USERNAME' | translate }}</mat-label>
+        <input matInput formControlName="username" placeholder="{{ 'EDIT_USER.USERNAME' | translate }}" required type="text"/>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="Email" required type="email"/>
+        <mat-label>{{ 'EDIT_USER.EMAIL' | translate }}</mat-label>
+        <input matInput formControlName="email" placeholder="{{ 'EDIT_USER.EMAIL' | translate }}" required type="email"/>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Teléfono Personal</mat-label>
-        <input matInput formControlName="personalPhone" placeholder="Teléfono Personal" required type="text"/>
+        <mat-label>{{ 'EDIT_USER.PERSONAL_PHONE' | translate }}</mat-label>
+        <input matInput formControlName="personalPhone" placeholder="{{ 'EDIT_USER.PERSONAL_PHONE' | translate }}" required type="text"/>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>NIF/NIE</mat-label>
-        <input matInput formControlName="nif" placeholder="NIF/NIE" required type="text"/>
+        <mat-label>{{ 'EDIT_USER.NIF_NIE' | translate }}</mat-label>
+        <input matInput formControlName="nif" placeholder="{{ 'EDIT_USER.NIF_NIE' | translate }}" required type="text"/>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
-        <mat-label>País</mat-label>
-        <input matInput formControlName="country" placeholder="País" required type="text"/>
-      </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input matInput formControlName="password" type="password" [type]="hide ? 'password' : 'text'" class="small-placeholder" placeholder="Actualiza o introduce la actual para mantenerla" required />
-        <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="primary-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-label>{{ 'EDIT_USER.COUNTRY' | translate }}</mat-label>
+        <input matInput formControlName="country" placeholder="{{ 'EDIT_USER.COUNTRY' | translate }}" required type="text"/>
       </mat-form-field>
     </div>
   </div>
   <div mat-dialog-actions class="centrado-solo">
-    <button mat-raised-button color="primary">Actualizar Datos</button>
+    <button mat-raised-button color="primary">{{ 'EDIT_USER.UPDATE_BUTTON' | translate }}</button>
   </div>
 </form>

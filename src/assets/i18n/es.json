@@ -1,0 +1,229 @@
+{
+  "TITLE": "ESCUELA DE TENIS OLULA DEL RIO",
+  "WELCOME": "Bienvenidos a la Escuela de Tenis Olula del Rio",
+  "ENJOY": "Disfruta de nuestras instalaciones modernas y de nuestras clases impartidas por profesionales del tenis. Puedes reservar pistas y participar en nuestros eventos y torneos. ¡Únete a nuestra comunidad de amantes del tenis!",
+  "LARGE_TEXT": "Las instalaciones del club se encuentran en un entorno único de 5.000 m2 rodeado de grandes arboles, piscina, catorce pistas de tenis, campo de Fútbol 7, cinco pistas de pádel, canastas y nuevo gimnasio. Esto es atractivo para cualquier deportista, pero es mucho más que eso. Nuestro restaurante en el entorno de la piscina permite conciliar la vida social con el deporte. Fiestas temáticas, navideñas, etc. A esto debes sumar la tranquilidad de los padres cuando no hay colegio con el comodín del club. Tus hijos disfrutarán al aire libre en la escuela de verano, escuela de navidad y días deportivos.",
+
+
+  "DASHBOARD": {
+    "WHY_CHOOSE": "Por qué elegir Club de Tenis Olula del Rio",
+    "WHY_CHOOSE_BODY": "Elige el Club de Tenis Olula del Río por nuestras modernas instalaciones, entrenadores profesionales y una comunidad apasionada por el tenis. Disfruta de clases personalizadas adaptadas a tu nivel y objetivos, asegurando un entrenamiento efectivo para mejorar tu juego. Participa en torneos emocionantes que fomentan un ambiente competitivo y estimulante. Únete a una comunidad dedicada a la excelencia en el tenis, donde cada miembro es valorado y apoyado en su camino hacia la mejora y el disfrute del deporte.",
+    "TENNIS_SCHOOL": "Escuela de Tenis",
+    "TENNIS_SCHOOL_BODY": "¡Comienza una nueva era del Tenis Olula del Rio! Practica con nosotros este maravilloso deporte de una forma divertida, motivadora y profesional a la vez que sana y beneficiosa para la salud.",
+    "COURT_RESERVATION": "Reserva de pistas",
+    "COURT_RESERVATION_BODY": "Reserva pistas en Olula del Río para disfrutar de instalaciones de primera clase, un entorno natural espectacular y un mantenimiento impecable.",
+    "FACILITIES": "Instalaciones",
+    "FACILITIES_BODY": "Nuestras instalaciones en Olula del Río cuentan con 2 pistas de tenis de alta calidad, piscina, y áreas verdes para relajarse. Además, disponemos de 3 canchas de pádel, un campo de fútbol 7, y un restaurante acogedor para disfrutar después del juego. Todo esto en un entorno natural y bien cuidado que fomenta el bienestar y la actividad deportiva."
+  },
+
+
+  "TENIS_SCHOOL": "Escuela Tenis",
+  "RESERVATIONS": "Reservas",
+  "FACILITIES": "Instalaciones",
+  "PROFILE": "Pérfil",
+  "LOGIN_DASH": "Iniciar Sesión",
+
+  "USER_PROFILE": {
+    "EDIT_BUTTON": "Editar datos",
+    "USERNAME": "Nombre de usuario",
+    "NIF_NIE": "NIF/NIE",
+    "PERSONAL_PHONE": "Teléfono personal",
+    "COUNTRY": "País",
+    "CREATION_DATE": "Fecha de creación",
+    "UPDATE_PASSWORD":"Actualizar pass"
+  },
+
+  "MAP_CARD": {
+    "TITLE": "Mapa de las Instalaciones",
+    "POPUP_TEXT": "Tennis Courts Olula del Rio"
+  },
+  "INFO_CARD": {
+    "TITLE": "Información del Club",
+    "SCHOOL": "Escuela de deportes en España",
+    "ADDRESS": "Dirección: Av. Vereda de Olula, 04860 Olula del Río, Almería",
+    "PHONE": "Teléfono: 606 05 92 08",
+    "SCHEDULE": "Horario: Martes y Jueves 17:00–21:00",
+    "PROVINCE": "Provincia: Almería"
+  },
+
+  "CREATE_RESERVATION": "Crear Reserva",
+  "RESERVATION_DETAILS": "Detalles de la Reserva",
+  "START": "Inicio",
+  "END": "Fin",
+  "EMAIL": "Email",
+  "PRICE": "Precio",
+  "CANCEL": "Cancelar",
+  "CONFIRM": "Confirmar",
+  "CLOSE": "Cerrar",
+  "DELETE": "Eliminar",
+  "RESERVED": "Reservado",
+
+  "EDIT_USER": {
+    "TITLE": "Editar Perfil",
+    "FULL_NAME": "Nombre Completo",
+    "USERNAME": "Nombre de Usuario",
+    "EMAIL": "Email",
+    "PERSONAL_PHONE": "Teléfono Personal",
+    "NIF_NIE": "NIF/NIE",
+    "COUNTRY": "País",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_PLACEHOLDER": "Actualiza o introduce la actual para mantenerla",
+    "UPDATE_BUTTON": "Actualizar Datos",
+    "CLOSE": "Cerrar"
+  },
+
+  "TENNIS_SCHOOL": {
+    "TITLE": "Inscríbete en la Escuela de Tenis",
+    "DESCRIPTION": "Únete a nuestra escuela de tenis y mejora tus habilidades mientras te diviertes!",
+    "SUBSCRIBE_BUTTON": "Inscribirse ahora",
+    "PAYMENT_SUCCESS": "¡Pago realizado con éxito!",
+    "ALREADY_SUBSCRIBED_TITLE": "¡Ya estás inscrito en la Escuela de Tenis!",
+    "UIPATH_JOBS_TITLE": "Trabajos de UiPath",
+    "START_JOB_BUTTON": "Iniciar Trabajo",
+    "USER_DASHBOARD_DESCRIPTION": "Estamos encantados de que te hayas inscrito. Aquí tienes la planificación semanal de actividades:"
+  },
+
+  "LOGIN": {
+    "TITLE": "Iniciar Sesión",
+    "USERNAME": "Usuario",
+    "USERNAME_PLACEHOLDER": "Introduzca su nombre de Usuario",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_PLACEHOLDER": "Introduzca su contraseña",
+    "LOGIN_BUTTON": "Iniciar Sesión",
+    "RESET_BUTTON": "Limpiar",
+    "REGISTER_PROMPT": "En caso de no tener cuenta,",
+    "REGISTER_LINK": "Regístrate",
+    "RECOVER_PROMPT": "Para recuperar el nombre de usuario o la contraseña, haz click",
+    "RECOVER_LINK": "aquí",
+    "USER_REQUIRED": "Usuario obligatorio",
+    "USER_REQUIRED_TEXT": "Debe introducir un usuario válido para poder iniciar sesión",
+    "PASSWORD_REQUIRED": "Contraseña obligatoria",
+    "PASSWORD_REQUIRED_TEXT": "Debe introducir una contraseña válida para poder iniciar sesión",
+    "PERMISSION_DENIED": "Permiso denegado",
+    "PERMISSION_DENIED_TEXT": "No tiene permisos para acceder a esta página",
+    "ERROR": "Error",
+    "INVALID_CREDENTIALS": "Email o contraseña incorrectos",
+    "OK": "Ok",
+    "ACCEPT": "Aceptar"
+  },
+
+  "PAYMENT_PAGE": {
+    "TITLE": "Página de Pago",
+    "RESERVATION_DETAILS": {
+      "USER_EMAIL": "Correo Electrónico",
+      "RESERVATION_START": "Inicio de la Reserva",
+      "RESERVATION_END": "Fin de la Reserva",
+      "PRICE": "Precio"
+    },
+    "PAYMENT_METHODS": {
+      "TITLE": "Elige el Método de Pago",
+      "CREDIT_CARD": "Tarjeta de Crédito",
+      "PAYPAL": "PayPal",
+      "MANO": "Pago en mano"
+    },
+    "CREDIT_CARD_FORM": {
+      "TITLE": "Información de la Tarjeta de Crédito",
+      "CARD_NUMBER": "Número de Tarjeta",
+      "EXPIRY_DATE": "Fecha de Expiración",
+      "CVV": "CVV",
+      "PAY_BUTTON": "Pagar con Tarjeta de Crédito"
+    },
+    "PAYPAL_FORM": {
+      "TITLE": "Pagar con PayPal",
+      "PAY_BUTTON": "Pagar con PayPal"
+    },
+    "MANO_FORM": {
+      "INSTRUCTION": "Acerquese a la pista y pague el importe descrito arriba al encargado de mantenimiento en mano en los próximos 5 días posteriores a la reserva. Le llegará una notificación de esta reserva al dependiente."
+    },
+    "CONFIRM_BUTTON": "Confirmar reserva"
+  },
+
+  "REGISTER_PAGE": {
+    "TITLE": "Página de registro",
+    "FULL_NAME": "Nombre Completo",
+    "FULL_NAME_PLACEHOLDER": "Introduzca su Nombre completo",
+    "COUNTRY": "Pais",
+    "COUNTRY_PLACEHOLDER": "Introduzca su País de origen",
+    "EMAIL": "Correo Electrónico",
+    "EMAIL_PLACEHOLDER": "Introduzca su correo electrónico",
+    "PHONE": "Teléfono",
+    "PHONE_PLACEHOLDER": "Introduzca su número de teléfono",
+    "LANGUAGE": "Idioma",
+    "LANGUAGE_PLACEHOLDER": "Introduzca su idioma",
+    "PASSWORD": "Contraseña",
+    "PASSWORD_PLACEHOLDER": "Introduzca una contraseña segura",
+    "NIF": "NIF/NIE",
+    "NIF_PLACEHOLDER": "Introduzca su NIF/NIE",
+    "REGISTER_BUTTON": "Registrarse",
+    "LOGIN_PROMPT": "Si ya tienes una cuenta,",
+    "LOGIN_LINK": "inicia sesión",
+    "REPEAT_PASSWORD": "Repite la Contraseña",
+    "REPEAT_PASSWORD_PLACEHOLDER": "Repita la contraseña",
+    "MANDATORY_FIELDS": "Campos obligatorios",
+    "ALL_FIELDS_REQUIRED": "Todos los campos son obligatorios",
+    "PASSWORD_MISMATCH": "Contraseñas no coinciden",
+    "PASSWORDS_DO_NOT_MATCH": "Las contraseñas no coinciden",
+    "ACCEPT": "Aceptar"
+  },
+
+  "REGISTER": {
+    "REQUIRED_FIELDS": "Campos obligatorios",
+    "REQUIRED_FIELDS_MSG": "Todos los campos son obligatorios",
+    "INVALID_EMAIL": "Email inválido",
+    "INVALID_EMAIL_MSG": "El email introducido no tiene un formato válido",
+    "INVALID_PHONE": "Teléfono inválido",
+    "INVALID_PHONE_MSG": "El teléfono introducido debe ser de 9 dígitos",
+    "INVALID_PASSWORD": "Contraseña inválida",
+    "INVALID_PASSWORD_MSG": "La contraseña debe tener al menos 8 caracteres",
+    "PASSWORD_MISMATCH": "Contraseñas no coinciden",
+    "PASSWORD_MISMATCH_MSG": "Las contraseñas no coinciden",
+    "EMAIL_REGISTERED": "Email ya registrado",
+    "EMAIL_ALREADY_REGISTERED": "El email introducido ya está registrado en el Sistema",
+    "USER_REGISTERED": "Usuario registrado",
+    "USER_REGISTERED_MSG": "Usuario registrado correctamente",
+    "REGISTRATION_ERROR": "Error en el registro",
+    "REGISTRATION_ERROR_MSG": "Ha ocurrido un error en el registro",
+    "CHECK_ERROR": "Error",
+    "CHECK_ERROR_MSG": "Error al comprobar el email",
+    "ACCEPT": "Aceptar",
+    "USERNAME": "Su nombre de usuario es"
+  },
+
+
+  "EDIT_PROFILE": {
+    "MODIFIED_SUCCESS": "Data modified",
+    "MODIFIED_SUCCESS_TEXT": "User data modified successfully",
+    "MODIFIED_ERROR": "Data not modified",
+    "MODIFIED_ERROR_TEXT": "User data could not be modified",
+    "ACCEPT": "Accept",
+    "FULL_NAME": "Full Name",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PERSONAL_PHONE": "Personal Phone",
+    "NIF": "NIF/NIE",
+    "COUNTRY": "Country",
+    "PASSWORD": "Password",
+    "PLACEHOLDER_PASSWORD": "Update or enter current to keep it"
+  },
+
+  "WEEKLY_PLAN": {
+    "DOWNLOAD_PDF": "Descargar PDF",
+    "EDIT": "Editar",
+    "SAVE": "Guardar",
+    "CANCEL": "Cancelar",
+    "TITLE": "Planificación Semanal de Actividades",
+    "TUESDAY": "Martes",
+    "THURSDAY": "Jueves",
+    "ONE_HOUR_CLASS": "Clase de 1 hora",
+    "OBJECTIVE": "Objetivo",
+    "DESCRIPTION": "Descripción de los Juegos y Ejercicios"
+  },
+
+  "TENISBAR": {
+    "LOGOUT_TITLE": "¿Quieres cerrar sesión?",
+    "LOGOUT_TEXT": "Se cerrará la sesión actual",
+    "LOGOUT_CONFIRM": "Aceptar",
+    "LOGOUT_CANCEL": "Cancelar",
+    "LOGOUT_SUCCESS": "Sesión cerrada correctamente"
+  }
+}

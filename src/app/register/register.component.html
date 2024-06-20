@@ -7,64 +7,66 @@
       </div>
     </div>
     <form (ngSubmit)="formSubmit()" style="margin: 1%;">
-      <h2>Página de registro</h2>
+      <h2>{{ 'REGISTER_PAGE.TITLE' | translate }}</h2>
       <mat-form-field class="fields" appearance="outline">
         <mat-icon class="primary-icon" matIconPrefix="">account_circle</mat-icon>
-        <mat-label>Nombre Completo</mat-label>
-        <input [(ngModel)]="user.fullName" name="fullName" required type="text" matInput placeholder="Introduzca su Nombre completo" />
+        <mat-label>{{ 'REGISTER_PAGE.FULL_NAME' | translate }}</mat-label>
+        <input [(ngModel)]="user.fullName" name="fullName" required type="text" matInput placeholder="{{ 'REGISTER_PAGE.FULL_NAME_PLACEHOLDER' | translate }}" />
       </mat-form-field>
       <br>
       <mat-form-field class="fields" appearance="outline">
         <mat-icon class="primary-icon" matIconPrefix="">account_circle</mat-icon>
-        <mat-label>Pais</mat-label>
-        <input [(ngModel)]="user.country" name="country" required type="text" matInput placeholder="Introduzca sus Pais de origen" />
+        <mat-label>{{ 'REGISTER_PAGE.COUNTRY' | translate }}</mat-label>
+        <input [(ngModel)]="user.country" name="country" required type="text" matInput placeholder="{{ 'REGISTER_PAGE.COUNTRY_PLACEHOLDER' | translate }}" />
       </mat-form-field>
       <br>
       <mat-form-field class="fields" appearance="outline">
         <mat-icon class="primary-icon" matIconPrefix="">alternate_email</mat-icon>
-        <mat-label>Email</mat-label>
-        <input [(ngModel)]="user.email" name="email" required type="email" matInput placeholder="Introduzca su correo electrónico" />
-
+        <mat-label>{{ 'REGISTER_PAGE.EMAIL' | translate }}</mat-label>
+        <input [(ngModel)]="user.email" name="email" required type="email" matInput placeholder="{{ 'REGISTER_PAGE.EMAIL_PLACEHOLDER' | translate }}" />
       </mat-form-field>
       <br>
       <mat-form-field class="fields" appearance="outline">
         <mat-icon class="primary-icon" matIconPrefix="">call</mat-icon>
-        <mat-label>Teléfono</mat-label>
-        <input [(ngModel)]="user.personalPhone" name="personalPhone" required type="long" matInput placeholder="Introduzca su número de teléfono" />
+        <mat-label>{{ 'REGISTER_PAGE.PHONE' | translate }}</mat-label>
+        <input [(ngModel)]="user.personalPhone" name="personalPhone" required type="text" matInput placeholder="{{ 'REGISTER_PAGE.PHONE_PLACEHOLDER' | translate }}" />
       </mat-form-field>
       <br>
       <mat-form-field class="fields" appearance="outline">
         <mat-icon class="primary-icon" matIconPrefix="">date_range</mat-icon>
-        <mat-label>Idioma</mat-label>
-        <input [(ngModel)]="user.language" name="language" required type="text" matInput placeholder="Introduzca su idioma" />
+        <mat-label>{{ 'REGISTER_PAGE.LANGUAGE' | translate }}</mat-label>
+        <input [(ngModel)]="user.language" name="language" required type="text" matInput placeholder="{{ 'REGISTER_PAGE.LANGUAGE_PLACEHOLDER' | translate }}" />
+      </mat-form-field>
+      <br>
+      <mat-form-field class="fields" appearance="outline">
+        <mat-icon class="primary-icon" matIconPrefix="">date_range</mat-icon>
+        <mat-label>{{ 'REGISTER_PAGE.NIF' | translate }}</mat-label>
+        <input [(ngModel)]="user.nif" name="nif" required type="text" matInput placeholder="{{ 'REGISTER_PAGE.NIF_PLACEHOLDER' | translate }}" />
       </mat-form-field>
       <br>
       <mat-form-field class="fields" appearance="outline">
         <mat-icon class="primary-icon" matIconPrefix="">key</mat-icon>
-        <mat-label>Contraseña</mat-label>
-        <input [(ngModel)]="user.password" name="password" required [type]="hide ? 'password' : 'text'" matInput placeholder="Introduzca una constraseña segura" />
+        <mat-label>{{ 'REGISTER_PAGE.PASSWORD' | translate }}</mat-label>
+        <input [(ngModel)]="user.password" name="password" required [type]="hide ? 'password' : 'text'" matInput placeholder="{{ 'REGISTER_PAGE.PASSWORD_PLACEHOLDER' | translate }}" />
         <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="primary-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <br>
       <mat-form-field class="fields" appearance="outline">
-        <mat-icon class="primary-icon" matIconPrefix="">date_range</mat-icon>
-        <mat-label>NIF/NIE</mat-label>
-        <input [(ngModel)]="user.nif" name="nif" required type="text" matInput placeholder="Introduzca su NIF/NIE" />
+        <mat-icon class="primary-icon" matIconPrefix="">key</mat-icon>
+        <mat-label>{{ 'REGISTER_PAGE.REPEAT_PASSWORD' | translate }}</mat-label>
+        <input [(ngModel)]="user.repeatPassword" name="repeatPassword" required [type]="hideRepeat ? 'password' : 'text'" matInput placeholder="{{ 'REGISTER_PAGE.REPEAT_PASSWORD_PLACEHOLDER' | translate }}" />
+        <mat-icon mat-icon-button matSuffix (click)="hideRepeat = !hideRepeat" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideRepeat" class="primary-icon">{{hideRepeat ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <br>
-      <mat-form-field class="fields" appearance="outline">
-        <mat-icon class="primary-icon" matIconPrefix="">date_range</mat-icon>
-        <mat-label>Area</mat-label>
-        <input [(ngModel)]="user.area" name="area" required type="text" matInput placeholder="Introduzca su Area" />
-      </mat-form-field>
+
 
       <div class="container">
-        <button mat-raised-button color="primary" type="submit">Registrarse</button>
+        <button mat-raised-button color="primary" type="submit">{{ 'REGISTER_PAGE.REGISTER_BUTTON' | translate }}</button>
       </div>
       <br>
       <p>
-        Si ya tienes una cuenta,
-        <a href="login">inicia sesión</a>
+        {{ 'REGISTER_PAGE.LOGIN_PROMPT' | translate }}
+        <a href="login">{{ 'REGISTER_PAGE.LOGIN_LINK' | translate }}</a>
       </p>
     </form>
   </mat-card>

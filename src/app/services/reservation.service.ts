@@ -16,23 +16,6 @@ export class ReservationService {
   }
 
 
-  getItem(key : string){
-    const item = localStorage.getItem(key);
-    return (item) ? JSON.parse(item) : null;
-  }
-
-  setItem(key : string, value:any){
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-
-  removeItem(key : string){
-      localStorage.removeItem(key);
-  }
-
-  clear(){
-    localStorage.clear();
-  }
-
   // obtener all reservas
   public getAllReservations():any{
     return this.httpClient.get(API_URL_RESERVATION+"getReservations");

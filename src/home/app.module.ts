@@ -9,7 +9,6 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
-import {TenisDashboardComponent} from "../app/tenis-dashboard/tenis-dashboard.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {EditProfileComponent} from "../app/edit-profile/edit-profile.component";
 import {MatCardModule} from "@angular/material/card";
@@ -40,14 +39,21 @@ import { InscripcionEscuelaComponent} from "../app/inscripcion-escuela/inscripci
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import  { WeeklyPlanComponent} from "../app/weekly-plan/weekly-plan.component";
+import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {UpdatePasswordComponent} from "../app/update-password/update-password.component";
+import { MatTableModule } from '@angular/material/table';
+import { ReservationListComponent } from "../app/reservation-list/reservation-list.component";
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     TenisbarComponent,
     RegisterComponent,
-    TenisDashboardComponent,
     DashboardComponent,
     LoginComponent,
     MapComponent,
@@ -55,40 +61,50 @@ import  { WeeklyPlanComponent} from "../app/weekly-plan/weekly-plan.component";
     TenisFooterComponent,
     EditProfileComponent,
     ReservationComponent,
-    ReservationDialog, // Añade el diálogo aquí
-    ViewReservationDialog, // Añade el diálogo para ver y borrar reserva
+    ReservationDialog, // Dialogo para confirmar reserva
+    ViewReservationDialog, // Diálogo para ver y borrar reserva
     PaymentComponent,
     InscripcionEscuelaComponent,
-    WeeklyPlanComponent
+    WeeklyPlanComponent,
+    UpdatePasswordComponent,
+    ReservationListComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    MatIconModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatChipsModule,
-    RouterOutlet,
-    FormsModule,
-    MatInputModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    MatButtonModule,
-    AppRoutingModule,
-    MdbRippleModule,
-    NgImageSliderModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    FullCalendarModule,
-    CarouselModule,
-    MatOptionModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        MatIconModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatChipsModule,
+        RouterOutlet,
+        FormsModule,
+        MatInputModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        MatButtonModule,
+        AppRoutingModule,
+        MdbRippleModule,
+        NgImageSliderModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        FullCalendarModule,
+        CarouselModule,
+        MatOptionModule,
+        MatTableModule,
+        MatSelectModule,
+        TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+      })
+    ],
   exports: [TenisbarComponent, TenisFooterComponent],
   providers: [
     AuthService,

@@ -1,21 +1,27 @@
 <div class="container" *ngIf="!isSubscribed; else subscribedTemplate">
-  <h2>Inscríbete en la Escuela de Tenis</h2>
-  <p>Únete a nuestra escuela de tenis y mejora tus habilidades mientras te diviertes!</p>
-
-  <button mat-raised-button color="primary" (click)="onSubscribe()">Inscribirse ahora</button>
-
+  <h2>{{ 'TENNIS_SCHOOL.TITLE' | translate }}</h2>
+  <p>{{ 'TENNIS_SCHOOL.DESCRIPTION' | translate }}</p>
+  <button mat-raised-button color="primary" (click)="onSubscribe()">{{ 'TENNIS_SCHOOL.SUBSCRIBE_BUTTON' | translate }}</button>
   <div *ngIf="paymentSuccessful" class="payment-success">
-    <h3>Pago realizado con éxito!</h3>
+    <h3>{{ 'TENNIS_SCHOOL.PAYMENT_SUCCESS' | translate }}</h3>
   </div>
 </div>
 
 <ng-template #subscribedTemplate>
   <div class="subscribed-container">
-    <h2>¡Ya estás inscrito en la Escuela de Tenis!</h2>
-    <button mat-raised-button color="primary" (click)="connectToRobot()">Conectar con el Robot</button>
+    <h2>{{ 'TENNIS_SCHOOL.ALREADY_SUBSCRIBED_TITLE' | translate }}</h2>
     <br><br>
+    <div>
+      <h1>{{ 'TENNIS_SCHOOL.UIPATH_JOBS_TITLE' | translate }}</h1>
+      <button (click)="startJob()">{{ 'TENNIS_SCHOOL.START_JOB_BUTTON' | translate }}</button>
+      <ul>
+        <li *ngFor="let job of jobs">
+          {{ job.Id }} - {{ job.State }}
+        </li>
+      </ul>
+    </div>
     <div class="user-dashboard">
-      <p>Estamos encantados de que te hayas inscrito. Aquí tienes la planificación semanal de actividades:</p>
+      <p>{{ 'TENNIS_SCHOOL.USER_DASHBOARD_DESCRIPTION' | translate }}</p>
       <app-weekly-plan></app-weekly-plan>
     </div>
   </div>

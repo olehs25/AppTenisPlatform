@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router  } from '@angular/router';
+import {TranslateService} from "@ngx-translate/core";
+
 
 @Component({
   selector: 'app-payment',
@@ -15,7 +17,11 @@ export class PaymentComponent {
     price: number | null = null;
     selectedPaymentMethod: string | null = null;
 
-    constructor(private route: ActivatedRoute, private router: Router) {}
+    constructor(private route: ActivatedRoute, private router: Router,
+                public translate: TranslateService) {
+      this.translate.use(window.navigator.language);
+
+    }
 
     ngOnInit(): void {
         this.route.queryParams.subscribe(params => {

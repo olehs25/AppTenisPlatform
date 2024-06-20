@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { PlanService } from '../services/plan.service';
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-weekly-plan',
@@ -28,7 +31,13 @@ export class WeeklyPlanComponent implements OnInit {
     ]
   };
 
-  constructor(private authService: AuthService, private planService: PlanService) {}
+  @ViewChild('planContent') planContent: any | undefined;
+
+
+  constructor(private authService: AuthService, private planService: PlanService,
+              public translate: TranslateService) {
+    this.translate.use(window.navigator.language);
+  }
 
   ngOnInit(): void {
     this.checkIfAdmin();
@@ -90,4 +99,33 @@ export class WeeklyPlanComponent implements OnInit {
       }
     );
   }
+  downloadPDF() {
+    const DATA = this.planContent.nativeElement;
+    const doc = new jsPDF('p', 'mm', 'a4');
+    const options = {
+      scale: 2,
+      useCORS: true
+    };
+
+    html2canvas(DATA, options).then(canvas => {
+      const imgWidth = 210; // Width of A4 in mm
+      const pageHeight = 295; // Height of A4 in mm
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const imgData = canvas.toDataURL('image/png');
+      let heightLeft = imgHeight;
+      let position = 0;
+
+      doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+      doc.save('Planificación_Semanal.pdf');
+    });
+  }
+
 }

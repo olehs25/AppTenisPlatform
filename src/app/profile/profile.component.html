@@ -1,27 +1,24 @@
- <mat-card class="card" style="color:#201642">
-    <mat-card-header>
-      <div mat-card-avatar>
-       <img src="./assets/images/fotoPista.jpg" class="header-image">
-      </div>
+<mat-card class="card" style="color:#201642">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <img src="./assets/images/fotoPista.jpg" class="header-image">
+    </div>
 
-      <mat-card-title>{{user?.fullName}}</mat-card-title>
-      <mat-card-subtitle>{{user?.email}}</mat-card-subtitle>
+    <mat-card-title>{{user?.fullName}}</mat-card-title>
+    <mat-card-subtitle>{{user?.email}}</mat-card-subtitle>
 
-      <mat-card-actions class="d-flex ms-auto">
-        <button (click)="editarUsuario(authService.getUser().id)" mat-raised-button color="primary">Editar datos</button>
-      </mat-card-actions>
-
-    </mat-card-header>
-    <br><br>
-    <mat-card-content style="font-size: 17px">
-      &nbsp;<p>Username: {{user?.username}}</p>
-      &nbsp;<p>NIF/NIE: {{user?.nif}}</p>
-      &nbsp;<p>PersonalPhone: {{user?.personalPhone}}</p>
-      &nbsp;<p>Country: {{user?.country}}</p>
-      &nbsp;<p>Creation Date: {{user?.creationDate}}</p>
-    </mat-card-content>
-  </mat-card>
+    <mat-card-actions class="button-container">
+      <button (click)="editarUsuario(authService.getUser().id)" mat-raised-button color="primary">{{'USER_PROFILE.EDIT_BUTTON' | translate }}</button>
+      <button mat-raised-button color="primary" (click)="updatePass()">{{'USER_PROFILE.UPDATE_PASSWORD' | translate }}</button>
+    </mat-card-actions>
+  </mat-card-header>
   <br><br>
-
-
-
+  <mat-card-content style="font-size: 17px; margin: 4%">
+    &nbsp;<p>{{'USER_PROFILE.USERNAME' | translate }}: {{ user?.username }}</p>
+    &nbsp;<p>{{'USER_PROFILE.NIF_NIE' | translate }}: {{ user?.nif }}</p>
+    &nbsp;<p>{{'USER_PROFILE.PERSONAL_PHONE' | translate }}: {{ user?.personalPhone }}</p>
+    &nbsp;<p>{{'USER_PROFILE.COUNTRY' | translate }}: {{ user?.country }}</p>
+    <!--&nbsp;<p>{{'USER_PROFILE.CREATION_DATE' | translate }}: {{ user?.creationDate }}</p>-->
+  </mat-card-content>
+</mat-card>
+<br><br>

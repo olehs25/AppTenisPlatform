@@ -1,6 +1,6 @@
 <div class="contenedor">
   <img class="foto" src="./assets/images/tenis.jpg">
-  <h1 class="centrado">Escuela de tenis Olula Del Rio</h1>
+  <h1 class="centrado">{{'TITLE' | translate}}</h1>
 </div>
 <br>
 <div class="slider-container">
@@ -12,32 +12,28 @@
                    [autoSlide]="{
                      interval: 5,
                      stopOnHover: true
-                     }"></ng-image-slider>
+                     }">
+
+  </ng-image-slider>
 </div>
 <div class="grid-container">
-<h1 style="color: black; padding-left: 10vw; padding-right: 10vw; padding-top: 2vw; text-align: center;" >Bienvenidos a la Escuela de Tenis Olula del Rio</h1>
-  <h3 style="color: black; padding-left: 10vw; padding-right: 10vw; padding-top: 2vw; text-align: center;" >Disfruta de nuestras instalaciones modernas y de nuestras clases impartidas por profesionales del tenis. Puedes reservar pistas y participar en nuestros eventos y torneos. ¡Únete a nuestra comunidad de amantes del tenis!</h3>
+<h1 style="color: black; padding-left: 10vw; padding-right: 10vw; padding-top: 2vw; text-align: center;" >{{'WELCOME' | translate}}</h1>
+  <h3 style="color: black; padding-left: 10vw; padding-right: 10vw; padding-top: 2vw; text-align: center;" >{{'ENJOY' | translate}}</h3>
 
-  <mat-grid-list cols="2" rowHeight="350px" style="padding: 10vw">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card" style="align-items: center; padding: 2vw">
+  <mat-grid-list cols="2" rowHeight="350px" class="dashboard-grid" gutterSize="16px">
+    <mat-grid-tile *ngFor="let card of (cards$ | async)" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
         <mat-card-header>
-          <mat-card-title>
-            <div style="font-size: 130%; color: #64588f">{{card.title}}</div>
-          </mat-card-title>
+          <mat-card-title class="card-title">{{ card.title }}</mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
-        <!--  <div class="image" *ngIf="card.title==''">
-            <img mat-card-img src="./assets/images/tenis.jpg">
-               </div>-->
-          <br>
-          <div style="font-size: 120%; color:#ffffff">{{card.body}}</div>
+          <div class="card-body">{{ card.body }}</div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
-</div>
-<div class="video-container">
+
+  <div class="video-container">
   <!-- Añade aquí el código de incrustación de Instagram -->
   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CxDE6JiLMph/" data-instgrm-version="12" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
     <div style="padding-left: 10vw;">
@@ -45,11 +41,7 @@
     </div>
   </blockquote>
 </div>
-<h3 style="color: black; padding-left: 10vw; padding-right: 10vw; padding-top: 2vw; text-align: center;" >Las
-  instalaciones del club se encuentran en un entorno único de 50.000 m2 rodeado de
-  grandes arboles, piscina, catorce pistas de tenis, campo de Fútbol 7, cinco pistas de pádel, canastas
-  y nuevo gimnasio. Esto es atractivo para cualquier deportista, pero es mucho más que eso. Nuestro
-  restaurante en el entorno de la piscina permite conciliar la vida social con el deporte. Fiestas temáticas,
-  navideñas, etc. A esto debes sumar la tranquilidad de los padres cuando no hay colegio con el comodín del
-  club. Tus hijos disfrutarán al aire libre en la escuela de verano, escuela de navidad y días deportivos.</h3>
+<h3 style="color: black; padding-left: 10vw; padding-right: 10vw; padding-top: 2vw; text-align: center;" >
+  {{'LARGE_TEXT' | translate}}</h3>
 <br><br>
+</div>
