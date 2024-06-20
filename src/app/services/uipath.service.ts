@@ -7,38 +7,33 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UiPathService {
-  private apiUrl = 'https://cloud.uipath.com/cursolkvfeff/DefaultTenant/odata';  // Reemplaza con tu URL
-  private authenticateUrl = 'https://cloud.uipath.com/cursolkvfeff/DefaultTenant/api/account/authenticate';  // Reemplaza con tu URL de autenticación
-  private apiKey = '14roa8mpwt3qf7DX+cOM7Ge8Xchq1DYYm/s16ve8zQMR2Clua30LVASAfUinoEAC2j1q7UuK5kKdXbTCQxDRPg=='; // Reemplaza con tu API Key
+  private orchestratorUrl = 'https://cloud.uipath.com/cursolkvfeff/portal_/tenant/odata'; // Ajusta esta URL según sea necesario
+  private apiKey = 'I/fnqvLT3Lqxt2Xcag+xcHlgg4D9FWBFXFjzZVTaDyQzP9BOzeFWYu3t32fC5gTuC0Ddl9mHFNQ6KSGP3+4Fcw=='; // Reemplaza con tu API key
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  authenticate(): Observable<string> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    const body = {
-      tenancyName: 'Default', // Reemplaza 'Default' si tienes un tenancy diferente
-      usernameOrEmailAddress: 'oleh.s.1997@gmail.com',
-      password: 'Villadenijar1'
-    };
-
-    return this.http.post(this.authenticateUrl, body, { headers })
-      .pipe(map((response: any) => response.result));
-  }
-
-  startJob(processKey: string, accessToken: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${accessToken}`,
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${this.apiKey}`,
       'Content-Type': 'application/json'
     });
+  }
+
+  getJobs(): Observable<any> {
+    const url = `${this.orchestratorUrl}/Jobs`;
+    return this.http.get(url, { headers: this.getHeaders() });
+  }
+
+  startJob(processKey: string, inputArguments: any): Observable<any> {
+    const url = `${this.orchestratorUrl}/Jobs/UiPath.Server.Configuration.OData.StartJobs`;
     const body = {
       startInfo: {
         ReleaseKey: processKey,
-        Strategy: 'All',
-        RobotIds: [],
-        NoOfRobots: 0
+        Strategy: 'ModernJobsCount',
+        JobsCount: 1,
+        InputArguments: JSON.stringify(inputArguments)
       }
     };
-
-    return this.http.post(`${this.apiUrl}/Jobs/UiPath.Server.Configuration.OData.StartJobs`, body, { headers });
+    return this.http.post(url, body, { headers: this.getHeaders() });
   }
 }

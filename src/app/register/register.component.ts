@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {MatSnackBar} from "@angular/material/snack-bar";
-import Swal from "sweetalert2";
-import {UserService} from "../services/user.service";
+import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import { UserService } from '../services/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +10,8 @@ import {UserService} from "../services/user.service";
 })
 export class RegisterComponent implements OnInit {
   hide = true;
+  hideRepeat = true;
+
   public user = {
     fullName: '',
     country: '',
@@ -18,58 +20,31 @@ export class RegisterComponent implements OnInit {
     nif: '',
     personalPhone: '',
     password: '',
-    area: '',
+    repeatPassword: ''
   };
 
   constructor(
     private userService: UserService,
-    private snack: MatSnackBar
-  ) {}
+    public translate: TranslateService
+  ) {
+    this.translate.use(window.navigator.language);
+  }
 
   ngOnInit(): void {}
 
-
-
-  checkEmail(email: string): Promise<Boolean> {
-    return new Promise((resolve, reject) => {
+  checkEmail(email: string): Promise<boolean> {
+    return new Promise((resolve) => {
       this.userService.checkEmail(email).subscribe(
         (data) => {
-          if (data === true) {
-            resolve(true);
-          } else {
-            reject(false);
-          }
+          console.log("Devolución del check del back: " + data);
+          resolve(data === true);
         },
         (error) => {
-          reject(error);
+          resolve(false);
         }
       );
     });
   }
-
-
-
-
-
-  // checkEmail(email: string): Boolean {
-  //   this.usuarioService.checkEmail(email).subscribe(
-  //     (data) => {
-  //       console.log('metodo checkEmail');
-  //       console.log(data);
-  //       if (data === true) {
-  //         console.log('El email está registrado');
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //       return error;
-  //     }
-  //   );
-  //   return false;
-  // }
 
   formSubmit() {
     console.log('Form submitted');
@@ -82,154 +57,116 @@ export class RegisterComponent implements OnInit {
       this.user.nif == '' ||
       this.user.personalPhone == '' ||
       this.user.password == '' ||
-      this.user.area == ''
+      this.user.repeatPassword == ''
     ) {
       Swal.fire({
-        title: 'Campos obligatorios',
-        text: 'Todos los campos son obligatorios',
+        title: this.translate.instant('REGISTER.REQUIRED_FIELDS'),
+        text: this.translate.instant('REGISTER.REQUIRED_FIELDS'),
         icon: 'warning',
         confirmButtonColor: '#2d336b',
-        confirmButtonText: 'Aceptar',
-
+        confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
       });
       return;
     }
 
-    //compruebo que el email sea correcto
+    // Compruebo que el email sea correcto
     if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(this.user.email)) {
       Swal.fire({
-        title: 'Email inválido',
-        text: 'El email introducido no tiene un formato válido',
+        title: this.translate.instant('REGISTER.INVALID_EMAIL'),
+        text: this.translate.instant('REGISTER.INVALID_EMAIL'),
         icon: 'info',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
         confirmButtonColor: '#2d336b',
       });
       return;
     }
-    //compruebo que el telefono sea correcto (9 digitos)
+    // Compruebo que el teléfono sea correcto (9 dígitos)
     if (!/^[0-9]{9}$/.test(this.user.personalPhone)) {
       Swal.fire({
-        title: 'Teléfono inválido',
-        text: 'El teléfono introducido debe ser de (9 dígitos)',
+        title: this.translate.instant('REGISTER.INVALID_PHONE'),
+        text: this.translate.instant('REGISTER.INVALID_PHONE'),
         icon: 'info',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
         confirmButtonColor: '#2d336b',
       });
       return;
     }
 
-    //compruebo que la contraseña tenga al menos 8 caracteres
+    // Compruebo que la contraseña tenga al menos 8 caracteres
     if (this.user.password.length < 8) {
       Swal.fire({
-        title: 'Contraseña inválida',
-        text: 'La contraseña debe tener al menos 8 caracteres',
+        title: this.translate.instant('REGISTER.INVALID_PASSWORD'),
+        text: this.translate.instant('REGISTER.INVALID_PASSWORD'),
         icon: 'info',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
         confirmButtonColor: '#2d336b',
       });
       return;
     }
-
+    // Compruebo que las contraseñas coincidan
+    if (this.user.password !== this.user.repeatPassword) {
+      Swal.fire({
+        title: this.translate.instant('REGISTER.PASSWORD_MISMATCH'),
+        text: this.translate.instant('REGISTER.PASSWORD_MISMATCH_MSG'),
+        icon: 'warning',
+        confirmButtonColor: '#2d336b',
+        confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
+      });
+      return;
+    }
 
     this.checkEmail(this.user.email).then(
       (data) => {
-        console.log('El email está registrado');
-        Swal.fire({
-          title: 'Email ya registrado',
-          text: 'El email introducido ya está registrado en el Sistema',
-          icon: 'warning',
-          confirmButtonText: 'Aceptar',
-          confirmButtonColor: '#2d336b',
-        });
-        return;
+        if (data) {
+          console.log('El email está registrado: ' + data);
+          Swal.fire({
+            title: this.translate.instant('REGISTER.EMAIL_REGISTERED'),
+            text: this.translate.instant('REGISTER.EMAIL_ALREADY_REGISTERED'),
+            icon: 'warning',
+            confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
+            confirmButtonColor: '#2d336b',
+          });
+        } else {
+          console.log('El email no está registrado: ' + data);
+          this.userService.registrarUsuario(this.user).subscribe(
+            (data: any) => {
+              console.log(data);
+              const username = this.user.email.split('@')[0]; // Extract the part before @ as username
+              Swal.fire({
+                title: this.translate.instant('REGISTER.USER_REGISTERED'),
+                text: this.translate.instant('REGISTER.USER_REGISTERED') + `. ${this.translate.instant('REGISTER.USERNAME')} ${username}`,
+                icon: 'success',
+                confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
+                confirmButtonColor: '#2d336b',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  window.location.href = '/login';
+                }
+              });
+            },
+            (error: any) => {
+              console.log(error);
+              Swal.fire({
+                title: this.translate.instant('REGISTER.REGISTRATION_ERROR'),
+                text: this.translate.instant('REGISTER.REGISTRATION_ERROR'),
+                icon: 'error',
+                confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
+                confirmButtonColor: '#2d336b',
+              });
+            }
+          );
+        }
       },
       (error) => {
-        console.log('El email no está registrado');
-        this.userService.registrarUsuario(this.user).subscribe(
-          (data: any) => {
-            console.log(data);
-            Swal.fire({
-              title: 'Usuario registrado',
-              text: 'Usuario registrado correctamente',
-              icon: 'success',
-              confirmButtonText: 'Aceptar',
-              confirmButtonColor: '#2d336b',
-            }).then((result) => {
-              if (result.isConfirmed) {
-                window.location.href='/login';
-              }
-            });
-            return;
-          },
-          (error: any) => {
-
-            console.log(error);
-            Swal.fire({
-              title: 'Error en el registro',
-              text: 'Ha ocurrido un error en el registro',
-              icon: 'error',
-              confirmButtonText: 'Aceptar',
-              confirmButtonColor: '#2d336b',
-            });
-            return;
-          }
-        );
+        console.log('Error checking email: ' + error);
+        Swal.fire({
+          title: this.translate.instant('REGISTER.CHECK_ERROR'),
+          text: this.translate.instant('REGISTER.CHECK_ERROR_MSG'),
+          icon: 'error',
+          confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
+          confirmButtonColor: '#2d336b',
+        });
       }
     );
-
-
-
-    //compruebo que el email no esté ya registrado
-    // if (this.checkEmail(this.usuario.email)) {
-    //   Swal.fire({
-    //     title: 'Email ya registrado',
-    //     text: 'El email introducido ya está registrado en el Sistema',
-    //     icon: 'warning',
-    //     confirmButtonText: 'Aceptar',
-    //   });
-    //   return;
-    // } else {
-    //   this.usuarioService.registrarUsuario(this.usuario).subscribe(
-    //     (data) => {
-    //       console.log(data);
-    //       Swal.fire({
-    //         title: 'Usuario registrado',
-    //         text: 'Usuario registrado correctamente',
-    //         icon: 'success',
-    //         confirmButtonText: 'Aceptar',
-    //       });
-    //       return;
-    //     },
-    //     (error) => {
-    //       console.log(error);
-    //       Swal.fire({
-    //         title: 'Error en el registro',
-    //         text: 'Ha ocurrido un error en el registro',
-    //         icon: 'error',
-    //         confirmButtonText: 'Aceptar',
-    //       });
-    //       return;
-    //     }
-    //   );
-    // }
-
-    // this.usuarioService.registrarUsuario(this.usuario).subscribe(
-    //   data => {
-    //     console.log(data);
-    //     Swal.fire({
-    //       title: 'Usuario registrado',
-    //       text: 'Usuario registrado correctamente',
-    //       icon: 'success',
-    //       confirmButtonText: 'Aceptar'
-    //     });
-    //   } ,
-    //   error => {
-    //     console.log(error);
-    //     this.snack.open("Ha ocurrido un error en el Registro", "Aceptar", {
-    //       duration: 5000,
-    //       verticalPosition: 'top',
-    //       });
-    //   },
-    // );
   }
 }

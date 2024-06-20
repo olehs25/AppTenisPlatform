@@ -4,6 +4,8 @@ import {userDTO} from "../models/userDTO";
 import {AuthService} from "../services/auth.service";
 import { MatDialog } from '@angular/material/dialog';
 import {EditProfileComponent} from "../edit-profile/edit-profile.component";
+import {TranslateService} from "@ngx-translate/core";
+import {UpdatePasswordComponent} from "../update-password/update-password.component";
 
 
 @Component({
@@ -15,7 +17,8 @@ export class ProfileComponent implements OnInit{
 
   errorMessage:string="";
   user?:userDTO;
-  constructor(public userService: UserService, public authService: AuthService, public dialog: MatDialog) {
+  constructor(public userService: UserService, public authService: AuthService, public dialog: MatDialog,
+              public translate: TranslateService) {
     this.cargarUsuario();
     /*
     this.userService.getUser(1).subscribe({
@@ -31,6 +34,7 @@ export class ProfileComponent implements OnInit{
     });
 
      */
+    this.translate.use(window.navigator.language);
   }
   openPopUpAcciones(id: number, title: string, user?: any) {
     const isMobile = window.matchMedia('(max-width: 600px)').matches; // Establece el tamaño máximo para dispositivos móviles
@@ -44,23 +48,36 @@ export class ProfileComponent implements OnInit{
 
 
     });
-
     _popUp.afterClosed().subscribe((result) => {
+      console.log("RESULT: "+result)
+
+        this.user = this.authService.getUser()
+
     });
-    this.cargarUsuario();
-    return this.authService.getUser();
+    return this.user;
   }
 
   editarUsuario(id: number) {
     console.log("ID DE USER DE EDIT: "+id);
    this.user =  this.openPopUpAcciones(id, 'Editar usuario');
-    this.cargarUsuario();
-    console.log("country DESUES DE EDITAR: "+this.user?.country)
+    console.log("fullanme DESUES DE EDITAR: "+this.user?.fullName)
+
+  }
+
+  updatePass() {
+    const isMobile = window.matchMedia('(max-width: 600px)').matches;
+    const width = isMobile ? '90%' : '30%';
+
+    this.dialog.open(UpdatePasswordComponent, {
+      width: width,
+      autoFocus: false,
+    });
   }
 
 
   cargarUsuario() {
     this.user = this.authService.getUser();
+    console.log("usuario final: "+this.user?.fullName)
     return this.user
 
   }

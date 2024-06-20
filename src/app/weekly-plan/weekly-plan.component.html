@@ -1,37 +1,38 @@
 <mat-card class="weekly-plan-card">
+  <div class="header-buttons">
+    <button mat-raised-button color="primary" (click)="downloadPDF()">{{ 'WEEKLY_PLAN.DOWNLOAD_PDF' | translate }}</button>
+    <button *ngIf="isAdmin && !isEditMode" mat-button (click)="toggleEditMode()">{{ 'WEEKLY_PLAN.EDIT' | translate }}</button>
+    <button *ngIf="isAdmin && isEditMode" mat-button (click)="savePlan()">{{ 'WEEKLY_PLAN.SAVE' | translate }}</button>
+    <button *ngIf="isAdmin && isEditMode" mat-button (click)="cancelEditMode()">{{ 'WEEKLY_PLAN.CANCEL' | translate }}</button>
+  </div>
   <mat-card-header>
-    <mat-card-title>Planificación Semanal de Actividades</mat-card-title>
-    <button *ngIf="isAdmin && !isEditMode" mat-button (click)="toggleEditMode()">Editar</button>
-    <button *ngIf="isAdmin && isEditMode" mat-button (click)="savePlan()">Guardar</button>
-    <button *ngIf="isAdmin && isEditMode" mat-button (click)="cancelEditMode()">Cancelar</button>
+    <mat-card-title style="margin: 50px; text-align: center">{{ 'WEEKLY_PLAN.TITLE' | translate }}</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
+  <mat-card-content #planContent class="pdf-content">
     <section>
-      <h3>Martes</h3>
-      <p><strong>Clase de 1 hora</strong></p>
-      <p><strong>Objetivo:</strong> Técnica de golpes y movilidad en la cancha</p>
+      <h3>{{ 'WEEKLY_PLAN.TUESDAY' | translate }}</h3>
+      <p><strong>{{ 'WEEKLY_PLAN.ONE_HOUR_CLASS' | translate }}</strong></p>
+      <p><strong>{{ 'WEEKLY_PLAN.OBJECTIVE' | translate }}:</strong> Técnica de golpes y movilidad en la cancha</p>
       <ul>
         <li *ngFor="let item of plan.martes">
           <strong>{{item.time}}:</strong>
-          <span *ngIf="!isEditMode">{{item.activity}}</span>
-          <input *ngIf="isEditMode" [(ngModel)]="item.activity" class="form-control" />
+          <span>{{item.activity}}</span>
         </li>
       </ul>
     </section>
     <section>
-      <h3>Jueves</h3>
-      <p><strong>Clase de 1 hora</strong></p>
-      <p><strong>Objetivo:</strong> Servicio y juego en la red</p>
+      <h3>{{ 'WEEKLY_PLAN.THURSDAY' | translate }}</h3>
+      <p><strong>{{ 'WEEKLY_PLAN.ONE_HOUR_CLASS' | translate }}</strong></p>
+      <p><strong>{{ 'WEEKLY_PLAN.OBJECTIVE' | translate }}:</strong> Servicio y juego en la red</p>
       <ul>
         <li *ngFor="let item of plan.jueves">
           <strong>{{item.time}}:</strong>
-          <span *ngIf="!isEditMode">{{item.activity}}</span>
-          <input *ngIf="isEditMode" [(ngModel)]="item.activity" class="form-control" />
+          <span>{{item.activity}}</span>
         </li>
       </ul>
     </section>
     <section>
-      <h3>Descripción de los Juegos y Ejercicios</h3>
+      <h3>{{ 'WEEKLY_PLAN.DESCRIPTION' | translate }}</h3>
       <ul>
         <li *ngFor="let desc of plan.descripcion">
           <strong>{{desc.title}}:</strong>

@@ -4,6 +4,8 @@ import { PaymentService } from '../services/payment.service';
 import { AuthService } from '../services/auth.service';
 import { UiPathService} from "../services/uipath.service";
 import { UserService } from '../services/user.service';
+import {TranslateService} from "@ngx-translate/core";
+
 
 @Component({
   selector: 'app-inscripcion-escuela',
@@ -11,7 +13,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./inscripcion-escuela.component.scss']
 })
 export class InscripcionEscuelaComponent {
-
+  jobs: any[] = [];
   registrationForm: FormGroup;
   isSubscribed: boolean = false;
   paymentSuccessful: boolean = false;
@@ -24,12 +26,15 @@ export class InscripcionEscuelaComponent {
     private paymentService: PaymentService,
     private authService: AuthService,
     private uiPathService: UiPathService,
-    private userService: UserService
+    private userService: UserService,
+    public translate: TranslateService
+
   ) {
     this.registrationForm = this.formBuilder.group({
       age: ['', Validators.required],
       level: ['', Validators.required]
     });
+    this.translate.use(window.navigator.language);
   }
 
   ngOnInit() {
@@ -50,14 +55,16 @@ export class InscripcionEscuelaComponent {
   }
 
   onSubscribe() {
-    const userId = this.authService.getUserId(); // Supongamos que tienes este método en AuthService
+    const userId = this.authService.getUserId();
     console.log("IDDD: "+userId)
     this.userService.subscribeUser(userId).subscribe(
       (response) => {
         this.isSubscribed = true;
-        this.authService.setIsSuscribed(response)
+        //this.authService.setIsSuscribed(response)
         this.paymentSuccessful = true;
-
+        // Aquí actualizar el token
+        const updatedToken = response.token; // Asegúrate de que el backend devuelva un token actualizado
+        this.authService.updateToken(updatedToken);
       },
       (error) => {
         console.error('Error subscribing user:', error);
@@ -66,15 +73,28 @@ export class InscripcionEscuelaComponent {
   }
 
 
-  connectToRobot(): void {
-    this.uiPathService.authenticate().subscribe(accessToken => {
-      this.uiPathService.startJob('1045166', accessToken).subscribe(response => {
-        console.log('Job started:', response);
-      }, error => {
-        console.error('Error starting job:', error);
-      });
-    }, error => {
-      console.error('Error authenticating:', error);
-    });
+  loadJobs() {
+    this.uiPathService.getJobs().subscribe(
+      data => {
+        this.jobs = data.value;
+      },
+      error => {
+        console.error('Error fetching jobs', error);
+      }
+    );
+  }
+
+  startJob() {
+    const processKey = '1055933'; // Reemplaza con tu ReleaseKey de UiPath
+    const inputArguments = { key: 'value' }; // Ajusta según los argumentos que necesites
+
+    this.uiPathService.startJob(processKey, inputArguments).subscribe(
+      response => {
+        console.log('Job started successfully', response);
+      },
+      error => {
+        console.error('Error starting job', error);
+      }
+    );
   }
 }

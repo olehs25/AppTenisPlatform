@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="home">
       <img src="assets/images/logo_tenis.png" alt="Tenis Olula del Rio" class="logo-img">
       Tenis Olula del Rio
     </a>
@@ -15,20 +15,20 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="inscription">Escuela Tenis</a>
+          <a class="nav-link" href="inscription">{{'TENIS_SCHOOL' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="reservation">Reservas</a>
+          <a class="nav-link" href="reservation">{{'RESERVATIONS' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  href="map">Instalaciones </a>
+          <a class="nav-link"  href="map">{{'FACILITIES' | translate}}</a>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="login" *ngIf="!loginService.isLoggedIn()" >Iniciar sesón</a>
+          <a class="nav-link" href="login" *ngIf="!loginService.isLoggedIn()" >{{'LOGIN_DASH' | translate}}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  href="profile" *ngIf="loginService.isLoggedIn()">Pérfil</a>
+          <a class="nav-link"  href="profile" *ngIf="loginService.isLoggedIn()">{{'PROFILE' | translate}}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="http://localhost:8081/user" *ngIf="isAdmin">Admin</a>

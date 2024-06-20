@@ -1,4 +1,8 @@
 <br>
-<div class="calendar-container">
+<div class="button-container">
+  <button mat-raised-button color="primary" *ngIf="isAdmin" (click)="goToReservationList()">Ver Lista de Reservas</button>
+</div>
+<div class="calendar-container" >
   <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
+

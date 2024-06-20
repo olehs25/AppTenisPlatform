@@ -1,39 +1,39 @@
- <mat-card class="login">
-    <mat-card>
-        <div>
-            <br>
-            <div class="image">
-                <img src="assets/images/login2.jpg" style="width: 8%" alt="">
-            </div>
-        </div>
+<mat-card class="login">
+  <mat-card>
+    <div>
+      <br>
+      <div class="image">
+        <img src="assets/images/login2.jpg" style="width: 8%" alt="">
+      </div>
+    </div>
 
-        <form (ngSubmit)="formSubmit()">
-            <h2>Iniciar Sesión</h2>
-            <mat-form-field class="fields" appearance="outline">
-                <mat-icon class="primary-icon" matIconPrefix="">alternate_username</mat-icon>
-                <mat-label>Usuario</mat-label>
-                <input [(ngModel)] = "loginData.username" name="username" required type="username" matInput placeholder="Introduzca su nomnbre de Usuario" />
-            </mat-form-field>
-            <br>
-            <mat-form-field class="fields" appearance="outline">
-                <mat-icon class="primary-icon" matIconPrefix="">key</mat-icon>
-                <mat-label>Contraseña</mat-label>
-                <input [(ngModel)] = "loginData.password" name="password" required [type]="hide ? 'password' : 'text'" matInput placeholder="Introduzca su contraseña" />
-                <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="primary-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </mat-form-field>
-            <br>
-            <div>
-                <button mat-raised-button class="button" type="submit">Iniciar Sesión</button>
-                <button mat-raised-button  type="reset" style="margin: 2%;">Limpiar</button>
-            </div>
-        </form>
-    <p style="margin-right: 25px">
-      En caso de no tener cuenta,
-      <a href="register">Regístrate</a>.
-    </p>
-      <p>
-        Para recuperar el nombre de usuario o la contraseña, haz click
-        <a href="http://localhost:8100/home">aquí</a>.
-      </p>
-    </mat-card>
- </mat-card>
+    <form (ngSubmit)="formSubmit()">
+      <h2>{{ 'LOGIN.TITLE' | translate }}</h2>
+      <mat-form-field class="fields" appearance="outline">
+        <mat-icon class="primary-icon" matIconPrefix="">alternate_username</mat-icon>
+        <mat-label>{{ 'LOGIN.USERNAME' | translate }}</mat-label>
+        <input [(ngModel)]="loginData.username" name="username" required type="text" matInput placeholder="{{ 'LOGIN.USERNAME_PLACEHOLDER' | translate }}" />
+      </mat-form-field>
+      <br>
+      <mat-form-field class="fields" appearance="outline">
+        <mat-icon class="primary-icon" matIconPrefix="">key</mat-icon>
+        <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
+        <input [(ngModel)]="loginData.password" name="password" required [type]="hide ? 'password' : 'text'" matInput placeholder="{{ 'LOGIN.PASSWORD_PLACEHOLDER' | translate }}" />
+        <mat-icon mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" class="primary-icon">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+      <br>
+      <div>
+        <button mat-raised-button class="button" type="submit">{{ 'LOGIN.LOGIN_BUTTON' | translate }}</button>
+        <button mat-raised-button type="reset" style="margin: 2%;">{{ 'LOGIN.RESET_BUTTON' | translate }}</button>
+      </div>
+    </form>
+  </mat-card>
+</mat-card>
+<p style="margin-top: 1px" align="center">
+  {{ 'LOGIN.REGISTER_PROMPT' | translate }}
+  <a href="register">{{ 'LOGIN.REGISTER_LINK' | translate }}</a>.
+</p>
+<p style="margin: 10px" align="center">
+  {{ 'LOGIN.RECOVER_PROMPT' | translate }}
+  <a href="http://localhost:8100/home">{{ 'LOGIN.RECOVER_LINK' | translate }}</a>.
+</p>

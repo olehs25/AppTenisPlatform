@@ -42,9 +42,6 @@ export const API_URL_CURRENT_USER = apiCurrentUser;
 let apiUrlPlan = 'http://localhost:8081/api/plan/';
 export const API_URL_PLAN = apiUrlPlan;
 
-// let apiComunidades = 'http://localhost:8082/plataforma/comunidades/';
-// export const API_URL_COMUNIDADES = apiComunidades;
-
-// let apiPlazas = 'http://localhost:8082/plataforma/plazas/';
-// export const API_URL_PLAZAS = apiPlazas;
+let apiUrlUpdatePass = 'http://localhost:8081/auth/updatePassword/';
+export const API_URL_UPDATE_PASSWORD = apiUrlUpdatePass;
 

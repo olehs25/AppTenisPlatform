@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {API_URL, API_URL_CHECK_EMAIL, API_URL_REGISTER} from "./helper";
+import {API_URL, API_URL_CHECK_EMAIL, API_URL_REGISTER, API_URL_UPDATE_PASSWORD} from "./helper";
 import {userDTO} from "../models/userDTO";
 import {catchError, Observable, throwError} from "rxjs";
 
@@ -54,6 +54,10 @@ export class UserService {
 
   subscribeUser(userId: number): Observable<any> {
     return this.httpClient.put<any>(API_URL+"/"+userId+"/subscribe", {});
+  }
+
+  updatePassword(userId: number, currentPassword: string, newPassword: string): Observable<any> {
+    return this.httpClient.put(API_URL_UPDATE_PASSWORD+userId, { currentPassword, newPassword });
   }
 
   private handleError(error:HttpErrorResponse){

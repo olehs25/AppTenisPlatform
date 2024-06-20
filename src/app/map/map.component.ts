@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { circle, Map, tileLayer } from 'leaflet';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-map',

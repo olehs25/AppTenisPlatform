@@ -1,5 +1,5 @@
 .weekly-plan-card {
-  margin: 20px;
+  margin: 5%;
   padding: 20px;
   background-color: #f5f5f5;
 }
@@ -20,3 +20,15 @@ ul {
 ul li {
   margin: 10px 0;
 }
+
+.pdf-content {
+  font-size: 14px; /* Ajusta este valor según sea necesario */
+}
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre los botones */
+  margin-left: auto; /* Empuja los botones a la derecha */
+}
+
+
