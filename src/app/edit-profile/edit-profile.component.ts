@@ -55,7 +55,7 @@ export class EditProfileComponent implements OnInit {
           confirmButtonColor: '#2d336b',
         }).then(() => {
           // Aquí actualizar el token
-          const updatedToken = result.token; // Asegúrate de que el backend devuelva un token actualizado
+          const updatedToken = result.token;
           this.authService.updateToken(updatedToken);
           console.log("SE HA MODIFICADO EL USER: " + result.fullName);
           this.ref.close(this.myform.value);

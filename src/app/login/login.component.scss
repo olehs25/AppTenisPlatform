@@ -1,7 +1,18 @@
 .fields {
-    width: 30%;
-    margin-right: auto;
-     align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  align-items: center;
+  padding: 10px;
+}
+
+//para móviles
+@media (max-width: 500px) {
+  .fields {
+    width: 70%;
+    margin: 0 auto;
+    padding: 5px;
+  }
 }
 
 .login{

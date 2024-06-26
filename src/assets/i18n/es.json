@@ -159,7 +159,7 @@
     "NIF_PLACEHOLDER": "Introduzca su NIF/NIE",
     "REGISTER_BUTTON": "Registrarse",
     "LOGIN_PROMPT": "Si ya tienes una cuenta,",
-    "LOGIN_LINK": "inicia sesión",
+    "LOGIN_LINK": "Inicia sesión",
     "REPEAT_PASSWORD": "Repite la Contraseña",
     "REPEAT_PASSWORD_PLACEHOLDER": "Repita la contraseña",
     "MANDATORY_FIELDS": "Campos obligatorios",
@@ -189,7 +189,8 @@
     "CHECK_ERROR": "Error",
     "CHECK_ERROR_MSG": "Error al comprobar el email",
     "ACCEPT": "Aceptar",
-    "USERNAME": "Su nombre de usuario es"
+    "USERNAME": "Su nombre de usuario es",
+    "REGISTER": "Registro"
   },
 
 

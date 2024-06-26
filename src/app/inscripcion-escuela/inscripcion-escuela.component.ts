@@ -60,7 +60,7 @@ export class InscripcionEscuelaComponent {
         //this.authService.setIsSuscribed(response)
         this.paymentSuccessful = true;
         // Aquí actualizar el token
-        const updatedToken = response.token; // Asegúrate de que el backend devuelva un token actualizado
+        const updatedToken = response.token;
         this.authService.updateToken(updatedToken);
       },
       (error) => {

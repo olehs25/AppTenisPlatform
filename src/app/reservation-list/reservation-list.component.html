@@ -1,47 +1,48 @@
 <div class="container">
   <br>
   <h2>Reservas</h2>
-  <table mat-table [dataSource]="reservations" class="mat-elevation-z8" matSort>
+  <div class="table-responsive">
+    <table mat-table [dataSource]="reservations" class="mat-elevation-z8" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
 
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
+      <!-- User Email Column -->
+      <ng-container matColumnDef="userEmail">
+        <th mat-header-cell *matHeaderCellDef> Usuario </th>
+        <td mat-cell *matCellDef="let element"> {{element.userEmail}} </td>
+      </ng-container>
 
-    <!-- User Email Column -->
-    <ng-container matColumnDef="userEmail">
-      <th mat-header-cell *matHeaderCellDef> Usuario </th>
-      <td mat-cell *matCellDef="let element"> {{element.userEmail}} </td>
-    </ng-container>
+      <!-- Start Date Column -->
+      <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Inicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
+      </ng-container>
 
-    <!-- Start Date Column -->
-    <ng-container matColumnDef="startDate">
-      <th mat-header-cell *matHeaderCellDef> Fecha de Inicio </th>
-      <td mat-cell *matCellDef="let element"> {{element.startDate}} </td>
-    </ng-container>
+      <!-- End Date Column -->
+      <ng-container matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Fin </th>
+        <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
+      </ng-container>
 
-    <!-- End Date Column -->
-    <ng-container matColumnDef="endDate">
-      <th mat-header-cell *matHeaderCellDef> Fecha de Fin </th>
-      <td mat-cell *matCellDef="let element"> {{element.endDate}} </td>
-    </ng-container>
+      <!-- Is Paid Column -->
+      <ng-container matColumnDef="isPaid">
+        <th mat-header-cell *matHeaderCellDef> Pagado </th>
+        <td mat-cell *matCellDef="let element"> {{element.isPaid ? 'Sí' : 'No'}} </td>
+      </ng-container>
 
-    <!-- Is Paid Column -->
-    <ng-container matColumnDef="isPaid">
-      <th mat-header-cell *matHeaderCellDef> Pagado </th>
-      <td mat-cell *matCellDef="let element"> {{element.isPaid ? 'Sí' : 'No'}} </td>
-    </ng-container>
+      <!-- Edit Button Column -->
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef> Editar Pago</th>
+        <td mat-cell *matCellDef="let element">
+          <button *ngIf="!element.isPaid" mat-raised-button color="primary" (click)="togglePaid(element)">Marcar pagado</button>
+        </td>
+      </ng-container>
 
-    <!-- Edit Button Column -->
-    <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef> Editar Pago</th>
-      <td mat-cell *matCellDef="let element">
-        <button *ngIf="!element.isPaid" mat-raised-button color="primary" (click)="togglePaid(element)">Marcar pagado</button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>
