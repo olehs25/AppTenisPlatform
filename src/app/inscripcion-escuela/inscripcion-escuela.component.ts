@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaymentService } from '../services/payment.service';
 import { AuthService } from '../services/auth.service';
-import { UiPathService} from "../services/uipath.service";
 import { UserService } from '../services/user.service';
 import {TranslateService} from "@ngx-translate/core";
 
@@ -25,10 +24,8 @@ export class InscripcionEscuelaComponent {
     private formBuilder: FormBuilder,
     private paymentService: PaymentService,
     private authService: AuthService,
-    private uiPathService: UiPathService,
     private userService: UserService,
     public translate: TranslateService
-
   ) {
     this.registrationForm = this.formBuilder.group({
       age: ['', Validators.required],
@@ -39,7 +36,7 @@ export class InscripcionEscuelaComponent {
 
   ngOnInit() {
     this.isSubscribed = this.authService.getUserIsSuscribed();
-    console.log("SUSCRIPCION: "+this.isSubscribed)
+    console.log("SUSCRIPCION: " + this.isSubscribed)
   }
 
   onSubmit() {
@@ -56,7 +53,7 @@ export class InscripcionEscuelaComponent {
 
   onSubscribe() {
     const userId = this.authService.getUserId();
-    console.log("IDDD: "+userId)
+    console.log("IDDD: " + userId)
     this.userService.subscribeUser(userId).subscribe(
       (response) => {
         this.isSubscribed = true;
@@ -72,29 +69,4 @@ export class InscripcionEscuelaComponent {
     );
   }
 
-
-  loadJobs() {
-    this.uiPathService.getJobs().subscribe(
-      data => {
-        this.jobs = data.value;
-      },
-      error => {
-        console.error('Error fetching jobs', error);
-      }
-    );
-  }
-
-  startJob() {
-    const processKey = '1055933'; // Reemplaza con tu ReleaseKey de UiPath
-    const inputArguments = { key: 'value' }; // Ajusta según los argumentos que necesites
-
-    this.uiPathService.startJob(processKey, inputArguments).subscribe(
-      response => {
-        console.log('Job started successfully', response);
-      },
-      error => {
-        console.error('Error starting job', error);
-      }
-    );
-  }
 }

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import { API_URL_RESERVATION} from "./helper";
 import {reservationDTO} from "../models/reservationDTO";
-import {catchError, Observable, of, throwError} from "rxjs";
+import {Observable} from "rxjs";
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,21 +29,16 @@ export class ReservationService {
     return this.httpClient.get(API_URL_RESERVATION+"getReservation/"+id);
   }
 
-  public registrarReserva(reservation:any){
-    return this.httpClient.post(API_URL_RESERVATION+"putReservation", reservation);
+  public registrarReserva(reservation:any): Observable<reservationDTO>{
+    return this.httpClient.post<reservationDTO>(API_URL_RESERVATION+"putReservation", reservation);
   }
 
   public borrarReserva(id:any){
     return this.httpClient.delete(API_URL_RESERVATION+"deleteReservation/"+id);
   }
 
-  private handleError(error:HttpErrorResponse){
-    if(error.status==0){
-      console.error('Se ha producido un error ',error.status, error.error)
-    }else{
-      console.error('Backend retornó el codigo de estado ',error.status, error.error)
-    }
-    return throwError(() => new Error('Algo falló. Por favor intente nuevamente.'))
+  updateReservation(id: number, data: any) {
+    return this.httpClient.put(API_URL_RESERVATION+"updateReservation/"+id, data);
   }
 }
 

@@ -93,7 +93,10 @@
     "ALREADY_SUBSCRIBED_TITLE": "You are already subscribed to the Tennis School!",
     "UIPATH_JOBS_TITLE": "UiPath Jobs",
     "START_JOB_BUTTON": "Start Job",
-    "USER_DASHBOARD_DESCRIPTION": "We are delighted that you have enrolled. Here is the weekly activity plan:"
+    "USER_DASHBOARD_DESCRIPTION": "We are delighted that you have enrolled. Here is the weekly activity plan:",
+    "BENEFIT_1": "Professional coaching",
+    "BENEFIT_2": "State-of-the-art facilities",
+    "BENEFIT_3": "Friendly community"
   },
 
   "LOGIN": {

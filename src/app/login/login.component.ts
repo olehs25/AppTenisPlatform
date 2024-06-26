@@ -62,7 +62,7 @@ export class LoginComponent {
           console.log("USUARIOOO final: " + user);
           //this.loginService.setUser(user);
           this.loginService.loginUser(data.token);
-          this.loginService.printUserData();  // Llamar a la función para imprimir los datos del usuario
+          this.loginService.printUserData();  //Llamar a la función para imprimir los datos del usuario
           if (this.loginService.getUserRole() == 'ADMIN') {
             window.location.href = 'http://localhost:8081/user';
             this.loginService.loginStatusSubject.next(true);

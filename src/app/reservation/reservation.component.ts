@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
-import interactionPlugin from '@fullcalendar/interaction'; // for selectable
-import dayGridPlugin from '@fullcalendar/daygrid'; // for dayGridMonth view
-import timeGridPlugin from '@fullcalendar/timegrid'; // for timeGridWeek and timeGridDay views
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReservationService } from "../services/reservation.service";
 import { reservationDTO } from "../models/reservationDTO";
@@ -30,20 +30,20 @@ export class ReservationComponent {
     selectMirror: true,
     dayMaxEvents: true,
     weekends: true,
-    slotMinTime: '09:00:00', // start time of the day
-    slotMaxTime: '21:00:00', // end time of the day
-    allDaySlot: false, // remove all day slot
-    height: 'auto', // adjust height automatically
+    slotMinTime: '09:00:00',
+    slotMaxTime: '21:00:00',
+    allDaySlot: false,
+    height: 'auto',
     validRange: {
-      start: new Date().toISOString().split('T')[0] // disable past dates
+      start: new Date().toISOString().split('T')[0]//deshabilitar dias anteriores a hoy
     },
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this),
-    slotDuration: '01:00:00', // set slot duration to 1 hour
+    slotDuration: '01:00:00', // reservas de 1 hora
     selectConstraint: {
-      start: '09:00:00', // only allow selections from 9:00 AM
-      end: '21:00:00' // only allow selections until 9:00 PM
+      start: '09:00:00',
+      end: '21:00:00'
     },
     selectOverlap: false
   };
@@ -83,7 +83,7 @@ export class ReservationComponent {
                 color: reservation.userEmail === loggedInUserEmail ? '' : 'red',
                 extendedProps: {
                     email: reservation.userEmail,
-                    price: 3, // assuming a fixed price
+                    price: 3,
                     isPaid: reservation.isPaid,
                     id: reservation.id,
                     isEditable: reservation.userEmail === loggedInUserEmail
@@ -98,7 +98,7 @@ export class ReservationComponent {
   handleDateSelect(selectInfo: DateSelectArg) {
     const calendarApi = selectInfo.view.calendar;
 
-    // Ensure the end time is exactly one hour after the start time
+
     const endDate = new Date(selectInfo.start);
     endDate.setHours(endDate.getHours() + 1);
 
@@ -124,10 +124,10 @@ export class ReservationComponent {
           userEmail: result.email,
           startDate: selectInfo.startStr,
           endDate: selectInfo.endStr,
-
         };
 
         this.reservationService.registrarReserva(newReservation).subscribe(reservation => {
+          console.log("ID RESERVA CREADA: "+reservation.toString())
           calendarApi.addEvent({
 
             start: selectInfo.startStr,
@@ -135,17 +135,19 @@ export class ReservationComponent {
             email: result.email,
             allDay: false,
             extendedProps: {
-              price: result.price
+              price: result.price,
+              id: reservation.id,
+
             }
           });
           // Redirigir a la página de pago
           this.router.navigate(['/payment'], {
             queryParams: {
-
               userMail: result.email,
               start: selectInfo.startStr,
               end: selectInfo.endStr,
-              price: result.price
+              price: result.price,
+              id: reservation.id,
             }
           });
         });

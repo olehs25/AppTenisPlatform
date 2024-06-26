@@ -28,8 +28,8 @@ export class UserService {
   clear(){
     localStorage.clear();
   }
-  public checkEmail(email: string) {
-    return this.httpClient.get(API_URL_CHECK_EMAIL + email);
+  public checkEmail(email: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(API_URL_CHECK_EMAIL + email);
   }
 
   public getUser(id: number):Observable<userDTO> {

@@ -5,6 +5,6 @@ export interface reservationDTO {
   startDate?: string;
   endDate?: string;
   isCreated?: boolean;
-  isPaid?: boolean;
+  isPaid?: number;
   creationDate?: Date;
 }

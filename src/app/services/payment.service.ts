@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -6,10 +7,23 @@ import { Observable, of } from 'rxjs';
 })
 export class PaymentService {
 
-  constructor() { }
+  private paymentUrl = 'providerPaymentURL'; // URL del endpoint de simulación de pago
+
+  constructor(private http: HttpClient) { }
 
   makePayment(amount: number): Observable<boolean> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer xxxxxxxxxxxxxxxxxxxxxx`
+    });
+
+    const body = {
+      amount: amount,
+      currency: 'USD',
+      description: 'Pago de prueba'
+    };
+
     // Simula un pago exitoso
-    return of(true);
+    return this.http.post<boolean>(this.paymentUrl, body, { headers });
   }
 }

@@ -75,15 +75,15 @@ h1 {
   text-align: center;
   font-weight: 1000;
   font-family: Garamond, serif;
-  background: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
-  backdrop-filter: blur(5px); /* Desenfoque más suave */
-  border-radius: 15px; /* Bordes redondeados */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
   -webkit-filter: drop-shadow(0.2vw 1px 1px black);
-  padding: 1.5vw 3vw; /* Aumentar el padding para cubrir todo el texto */
+  padding: 1.5vw 3vw;
   animation: fadeIn 2s ease-in-out;
 }
 
-/* Animación para la entrada suave */
+//Animación para la entrada suave
 @keyframes fadeIn {
   from {
     opacity: 0;
