@@ -15,13 +15,6 @@
 <ng-template #subscribedTemplate>
   <div class="subscribed-container">
     <h2>{{ 'TENNIS_SCHOOL.ALREADY_SUBSCRIBED_TITLE' | translate }}</h2>
-    <div>
-      <ul>
-        <li *ngFor="let job of jobs">
-          {{ job.Id }} - {{ job.State }}
-        </li>
-      </ul>
-    </div>
     <div class="user-dashboard">
       <p>{{ 'TENNIS_SCHOOL.USER_DASHBOARD_DESCRIPTION' | translate }}</p>
       <app-weekly-plan></app-weekly-plan>

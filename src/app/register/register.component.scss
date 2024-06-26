@@ -17,6 +17,15 @@
   align-items: center;
 }
 
+//para móviles
+@media (max-width: 500px) {
+  .fields {
+    width: 70%;
+    margin: 0 auto;
+    padding: 5px;
+  }
+}
+
 .btn btn-lg btn-primary{
   height: 500px;
 

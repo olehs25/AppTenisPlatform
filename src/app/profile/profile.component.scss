@@ -1,6 +1,6 @@
 .card {
   max-width: 600px;
-  margin: auto;
+  margin: 500px;
   background-color: #f8f9fa;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -39,26 +39,21 @@
 @media (max-width: 600px) {
   .card {
     padding: 20px;
+    margin: 5px;
   }
 
-  .header-image {
-    width: 60px;
-    height: 60px;
-  }
-
-  .mat-card-content {
-    font-size: 15px;
-  }
 }
 
 .button-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 15%; /* Asegura que los botones estén alineados a la izquierda */
+
 }
 
 .button-container button {
   margin-bottom: 5px;
-  width: auto; /* Ajusta el ancho del botón para que se alinee a la izquierda */
+  width: 100%;
+  margin-right: 6%;
+  margin-left: 12%;
 }

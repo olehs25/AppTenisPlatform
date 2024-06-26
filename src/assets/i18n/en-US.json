@@ -172,7 +172,7 @@
     "NIF_PLACEHOLDER": "Enter your NIF/NIE",
     "REGISTER_BUTTON": "Register",
     "LOGIN_PROMPT": "If you already have an account,",
-    "LOGIN_LINK": "log in here",
+    "LOGIN_LINK": "Log in here",
     "MANDATORY_FIELDS": "Mandatory fields",
     "ALL_FIELDS_REQUIRED": "All fields are required",
     "PASSWORD_MISMATCH": "Passwords do not match",
@@ -202,7 +202,8 @@
     "REGISTRATION_ERROR_MSG": "There was an error in the registration",
     "CHECK_ERROR": "Error",
     "CHECK_ERROR_MSG": "Error checking email",
-    "ACCEPT": "Accept"
+    "ACCEPT": "Accept",
+    "REGISTER": "Register"
   },
 
   "WEEKLY_PLAN": {
