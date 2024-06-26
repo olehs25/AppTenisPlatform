@@ -33,14 +33,16 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   checkEmail(email: string): Promise<boolean> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.userService.checkEmail(email).subscribe(
-        (data) => {
-          console.log("Devolución del check del back: " + data);
-          resolve(data === true);
-        },
-        (error) => {
-          resolve(false);
+        (data: boolean) => {
+          if (!data) {
+            console.log("Devolución del check del back: " + data);
+            resolve(false);
+          }else{
+            console.log("Devolución del check del back: " + data);
+            resolve(true);
+          }
         }
       );
     });
@@ -92,6 +94,11 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
+    // Añadir "+34" al número de teléfono si no lo tiene
+    if (!this.user.personalPhone.startsWith('+34')) {
+      this.user.personalPhone = '+34' + this.user.personalPhone;
+    }
+
     // Compruebo que la contraseña tenga al menos 8 caracteres
     if (this.user.password.length < 8) {
       Swal.fire({
@@ -134,7 +141,7 @@ export class RegisterComponent implements OnInit {
               const username = this.user.email.split('@')[0]; // Extract the part before @ as username
               Swal.fire({
                 title: this.translate.instant('REGISTER.USER_REGISTERED'),
-                text: this.translate.instant('REGISTER.USER_REGISTERED') + `. ${this.translate.instant('REGISTER.USERNAME')} ${username}`,
+                html: this.translate.instant('REGISTER.USERNAME') + ` <span style="color: red;">${username}</span>`,
                 icon: 'success',
                 confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),
                 confirmButtonColor: '#2d336b',
@@ -160,7 +167,7 @@ export class RegisterComponent implements OnInit {
       (error) => {
         console.log('Error checking email: ' + error);
         Swal.fire({
-          title: this.translate.instant('REGISTER.CHECK_ERROR'),
+          title: this.translate.instant('REGISTER.EMAIL_ALREADY_REGISTERED'),
           text: this.translate.instant('REGISTER.CHECK_ERROR_MSG'),
           icon: 'error',
           confirmButtonText: this.translate.instant('REGISTER.ACCEPT'),

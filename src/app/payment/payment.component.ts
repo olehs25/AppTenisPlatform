@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router  } from '@angular/router';
 import {TranslateService} from "@ngx-translate/core";
+import { ReservationService } from "../services/reservation.service";
 
 
 @Component({
@@ -16,9 +17,10 @@ export class PaymentComponent {
     end: string | null = null;
     price: number | null = null;
     selectedPaymentMethod: string | null = null;
+    id: number | null = null;
 
     constructor(private route: ActivatedRoute, private router: Router,
-                public translate: TranslateService) {
+                public translate: TranslateService, public reservationService: ReservationService) {
       this.translate.use(window.navigator.language);
 
     }
@@ -32,6 +34,7 @@ export class PaymentComponent {
             this.start = this.finalstart
             this.end = params['end'];
             this.price = params['price'];
+            this.id = params['id'];
         });
     }
 
@@ -40,16 +43,31 @@ export class PaymentComponent {
     }
 
     processPayment() {
-        // Aquí puedes añadir la lógica para procesar el pago con tarjeta de crédito
         alert('Processing credit card payment...');
     }
 
     processPaypalPayment() {
-        // Aquí puedes añadir la lógica para procesar el pago con PayPal
         alert('Processing PayPal payment...');
     }
 
   goToReservations() {
-    this.router.navigate(['reservation']);
+    const isPaid = this.selectedPaymentMethod !== 'mano' ? 1 : 0;
+    const updateData = {
+      isPaid: isPaid
+    };
+
+    if (this.id) {
+      this.reservationService.updateReservation(this.id, updateData).subscribe(
+        response => {
+          console.log('Reservation updated successfully', response);
+          this.router.navigate(['reservation']);
+        },
+        error => {
+          console.error('Error updating reservation', error);
+        }
+      );
+    } else {
+      console.error('Reservation ID is missing');
+    }
   }
 }

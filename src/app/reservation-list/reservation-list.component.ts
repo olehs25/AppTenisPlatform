@@ -10,7 +10,7 @@ import { reservationDTO } from '../models/reservationDTO';
 export class ReservationListComponent implements OnInit{
 
   reservations: reservationDTO[] = [];
-  displayedColumns: string[] = ['id', 'userEmail', 'startDate', 'endDate', 'isPaid'];
+  displayedColumns: string[] = ['id', 'userEmail', 'startDate', 'endDate', 'isPaid', 'edit'];
 
   constructor(private reservationService: ReservationService) { }
 
@@ -28,4 +28,19 @@ export class ReservationListComponent implements OnInit{
       }
     );
   }
+
+  togglePaid(reservation: reservationDTO) {
+    reservation.isPaid = 1;
+    if (reservation.id != null) {
+      this.reservationService.updateReservation(reservation.id, reservation).subscribe(
+        (updatedReservation: reservationDTO) => {
+          this.loadReservations();
+        },
+        (error) => {
+          console.error('Error updating reservation:', error);
+        }
+      );
+    }
+  }
+
 }

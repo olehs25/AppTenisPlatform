@@ -1,7 +1,12 @@
 <div class="container" *ngIf="!isSubscribed; else subscribedTemplate">
-  <h2>{{ 'TENNIS_SCHOOL.TITLE' | translate }}</h2>
-  <p>{{ 'TENNIS_SCHOOL.DESCRIPTION' | translate }}</p>
-  <button mat-raised-button color="primary" (click)="onSubscribe()">{{ 'TENNIS_SCHOOL.SUBSCRIBE_BUTTON' | translate }}</button>
+  <h2 class="title">{{ 'TENNIS_SCHOOL.TITLE' | translate }}</h2>
+  <p class="description">{{ 'TENNIS_SCHOOL.DESCRIPTION' | translate }}</p>
+  <ul class="benefits">
+    <li>{{ 'TENNIS_SCHOOL.BENEFIT_1' | translate }}</li>
+    <li>{{ 'TENNIS_SCHOOL.BENEFIT_2' | translate }}</li>
+    <li>{{ 'TENNIS_SCHOOL.BENEFIT_3' | translate }}</li>
+  </ul>
+  <button mat-raised-button color="primary" class="subscribe-button" (click)="onSubscribe()">{{ 'TENNIS_SCHOOL.SUBSCRIBE_BUTTON' | translate }}</button>
   <div *ngIf="paymentSuccessful" class="payment-success">
     <h3>{{ 'TENNIS_SCHOOL.PAYMENT_SUCCESS' | translate }}</h3>
   </div>
@@ -10,10 +15,7 @@
 <ng-template #subscribedTemplate>
   <div class="subscribed-container">
     <h2>{{ 'TENNIS_SCHOOL.ALREADY_SUBSCRIBED_TITLE' | translate }}</h2>
-    <br><br>
     <div>
-      <h1>{{ 'TENNIS_SCHOOL.UIPATH_JOBS_TITLE' | translate }}</h1>
-      <button (click)="startJob()">{{ 'TENNIS_SCHOOL.START_JOB_BUTTON' | translate }}</button>
       <ul>
         <li *ngFor="let job of jobs">
           {{ job.Id }} - {{ job.State }}

@@ -80,7 +80,10 @@
     "ALREADY_SUBSCRIBED_TITLE": "¡Ya estás inscrito en la Escuela de Tenis!",
     "UIPATH_JOBS_TITLE": "Trabajos de UiPath",
     "START_JOB_BUTTON": "Iniciar Trabajo",
-    "USER_DASHBOARD_DESCRIPTION": "Estamos encantados de que te hayas inscrito. Aquí tienes la planificación semanal de actividades:"
+    "USER_DASHBOARD_DESCRIPTION": "Estamos encantados de que te hayas inscrito. Aquí tienes la planificación semanal de actividades:",
+    "BENEFIT_1": "Entrenamiento profesional",
+    "BENEFIT_2": "Instalaciones de última generación",
+    "BENEFIT_3": "Comunidad amigable"
   },
 
   "LOGIN": {
